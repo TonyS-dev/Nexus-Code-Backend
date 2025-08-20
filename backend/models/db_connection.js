@@ -16,13 +16,12 @@ export const pool = new Pool({
     connectionTimeoutMillis: process.env.DB_CONN_TIMEOUT_MS ? Number(process.env.DB_CONN_TIMEOUT_MS) : 2000
 });
 
-
 // Simple query helper
 export async function query(text, params) {
     const start = Date.now();
     const res = await pool.query(text, params);
     const duration = Date.now() - start;
-    // optional: console.log('Executed query', { text, duration, rows: res.rowCount });
+    console.log('Executed query', { text, duration, rows: res.rowCount });
     return res;
 }
 

@@ -2,7 +2,7 @@
 import cors from "cors"
 import express from "express"
 import morgan from "morgan";
-import usersRoutes from "./../routes/users.js";
+import usersRoutes from "./../routes/users.route.js";
 // Custom Middleware to handle errors
 import { globalErrorHandler } from "./../middleware/globalErrorHandler.js";
 
@@ -23,5 +23,5 @@ app.use(globalErrorHandler);
 
 // Initialize server
 app.listen(app.get('port'), () => {
-    console.log(`Servidor escuchando en el puerto ${app.get('port')}`);
+    console.log(`Server listening on the port ${app.get('port')}`);
 });

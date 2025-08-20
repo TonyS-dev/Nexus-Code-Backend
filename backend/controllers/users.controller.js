@@ -2,7 +2,7 @@
 // Responsibility: To handle HTTP requests, validate input, and orchestrate responses for the 'users' entity.
 // Example:
 
-import * as UserService from '../services/user.service.js';
+import * as UserService from '../services/users.service.js';
 
 export const getAllUsers = async (req, res, next) => {
     const users = await UserService.findAllUsers();
