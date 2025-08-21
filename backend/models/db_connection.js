@@ -21,7 +21,9 @@ export async function query(text, params) {
     const start = Date.now();
     const res = await pool.query(text, params);
     const duration = Date.now() - start;
-    console.log('Executed query', { text, duration, rows: res.rowCount });
+    if (process.env.NODE_ENV === 'development') {
+        console.log('Executed query', { text, duration, rows: res.rowCount });
+    }
     return res;
 }
 
@@ -38,4 +40,9 @@ export async function testDBConnection() {
     } catch (error) {
         console.error('❌ Error connecting to the database:', error.message);
     }
+}
+
+if (process.env.NODE_ENV === 'development') {
+    testDBConnection();
+    console.log(pool.options);
 }
