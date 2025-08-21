@@ -9,7 +9,7 @@
     "seed": "node seeders/run_seeders.js"
   },
   "keywords": [],
-  "author": "Antonio Santiago",
+  "authors": "Antonio Santiago, ...",
   "license": "ISC",
   "type": "module",
   "dependencies": {

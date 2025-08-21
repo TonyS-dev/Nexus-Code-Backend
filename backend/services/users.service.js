@@ -1,6 +1,6 @@
 // backend/services/user.service.js
 // Responsibility: To interact directly with the database for the 'users' entity.
-
+// Query Examples:
 import { pool } from '../models/db_connection.js';
 
 /**

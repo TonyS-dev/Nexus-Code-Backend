@@ -1,6 +1,6 @@
 // frontend/src/js/api.js
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 async function apiRequest(path, method = 'GET', body = null) {
     const url = `${API_BASE_URL}${path}`;
