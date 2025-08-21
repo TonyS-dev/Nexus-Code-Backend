@@ -2,27 +2,27 @@
 
 Este plan divide el proyecto en roles claros y un cronograma de 3 semanas de desarrollo (Sprints), asegurando que cada miembro del equipo tenga una carga de trabajo balanceada y responsabilidades definidas.
 
-#### **Paso 1: Definir los Roles (La Estructura Humana)**
+#### **Paso 1: Definir los Roles**
 
 En un equipo de 5, es crucial definir roles con responsabilidades primarias para operar de manera profesional y cumplir con los requisitos de SCRUM. Aunque todos los miembros son desarrolladores full-stack, cada rol es el "dueño" de un área para garantizar la calidad y coherencia del proyecto.
 
-*   **Rol 1: Scrum Master / Project Manager**
+*   **Rol 1: Scrum Master / Project Manager (Alvaro) + Backend Support**
     *   **Responsabilidades:** Es el facilitador del equipo, responsable de que el proceso ágil funcione sin problemas.
     *   **Tareas Clave:** Organizar y dirigir las reuniones (Daily Standups, Sprint Planning, Retrospectivas). Mantener el board de Azure DevOps actualizado. Identificar y ayudar a eliminar cualquier bloqueo que afecte al equipo. Es el guardián del proceso.
 
-*   **Rol 2: Product Owner / Analista de Negocio**
+*   **Rol 2: Product Owner / Analista de Negocio (Roberto) + Frontend Support**
     *   **Responsabilidades:** Actúa como la "voz del cliente", asegurando que el producto final cumpla con la visión y los requisitos.
     *   **Tareas Clave:** Redactar y detallar las Historias de Usuario. Priorizar el Product Backlog. Tomar decisiones sobre el alcance y las funcionalidades del producto. Es responsable principal de la documentación técnica.
 
-*   **Rol 3: Backend Lead / Arquitecto de Datos**
+*   **Rol 3: Backend Lead / Arquitecto de Datos (Luis)**
     *   **Responsabilidades:** Es el dueño de la API y la base de datos. Garantiza que el backend sea sólido, seguro y escalable.
     *   **Tareas Clave:** Diseñar el Modelo Entidad-Relación (ERD) final. Escribir el script SQL (DDL). Definir la arquitectura de la API (Controllers, Services, Routes). Implementar el núcleo de la lógica de negocio y las consultas complejas.
 
-*   **Rol 4: Frontend Lead / Diseñador UI/UX**
+*   **Rol 4: Frontend Lead / Diseñador UI/UX (Sebastian)**
     *   **Responsabilidades:** Es el dueño de la experiencia del usuario. Garantiza que la aplicación sea intuitiva, funcional y visualmente atractiva.
     *   **Tareas Clave:** Crear los prototipos y wireframes en Figma o herramientas similares. Definir la estructura de componentes del frontend (`api.js`, `ui.js`). Implementar las vistas principales y asegurar que el diseño sea responsivo.
 
-*   **Rol 5: DevOps Lead / Especialista en QA**
+*   **Rol 5: DevOps Lead / Especialista en QA (Antonio) + Backend & Frontend Support**
     *   **Responsabilidades:** Es responsable de la integración, despliegue y calidad del proyecto. Actúa como el puente entre el desarrollo y la producción.
     *   **Tareas Clave:** Configurar y mantener el repositorio en GitHub (ramas, reglas de merge). Escribir los scripts de carga masiva (seeder). Gestionar el despliegue a Netlify/Vercel. Liderar las pruebas manuales End-to-End (E2E) y reportar bugs.
 
