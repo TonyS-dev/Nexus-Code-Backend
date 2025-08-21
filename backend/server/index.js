@@ -2,7 +2,7 @@
 import cors from "cors"
 import express from "express"
 import morgan from "morgan";
-import usersRoutes from "./../routes/users.route.js";
+import employeesRoutes from "./../routes/employees.route.js";
 // Custom Middleware to handle errors
 import { globalErrorHandler } from "./../middleware/globalErrorHandler.js";
 
@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Routes
-app.use('/users', usersRoutes);
+app.use('/employees', employeesRoutes);
 
 // Global Error Handler
 app.use(globalErrorHandler);
