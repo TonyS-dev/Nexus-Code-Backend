@@ -19,6 +19,7 @@ app.use(express.json());
 // Routes
 app.use('/employees', employeesRoutes);
 app.use('/roles', rolesRoutes);
+
 // Global Error Handler
 app.use(globalErrorHandler);
 
