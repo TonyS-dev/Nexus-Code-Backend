@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #0a0a2a;
+    color: white;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+.left-panel {
+    flex: 1;
+    background-color: #0a0a2a;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.riwi-logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 2.5rem;
+}
+.form-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+.form-text {
+    color: #b0b0e0;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+.form-control {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #a0a0d0;
+    color: white;
+    padding: 0.8rem 0;
+    width: 100%;
+    margin-bottom: 1.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.form-control::placeholder {
+      color: #a0a0d0;
+}
+
+.forgot-password {
+    color: #b0b0e0;
+    font-size: 1.1rem;
+    margin-bottom: 1.8rem;
+    cursor: pointer;
+
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.forgot-password:hover {
+color: white;
+text-decoration: underline;
+}
+.btn-login {
+
+    background-color: #8e63ff;
+    color: white;
+    border: none;
+    padding: 1rem 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-login:hover {
+    background-color: #7f50e7;
+    transform: translateY(-2px);
+}
+.right-panel {
+    flex: 1;
+    background-color: #6c5ce7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items: center;
+    position: relative;
+}
+.welcome-text {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 700;
+  z-index: 10;
+  letter-spacing: 0.1rem;
+}
+
+.riwi-text-gradient {
+background: linear-gradient(90deg, #5845e2, #351486, #210c5e, #5845e2);
+background-size: 200% 100%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+color: transparent;
+font-weight: bold;
+display: inline;
+}
