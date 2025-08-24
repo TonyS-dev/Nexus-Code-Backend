@@ -131,3 +131,4 @@ function redirectToDashboard(role) {
   console.log(`User with role '${role}' logged in. Redirecting to ${label}...`);
   alert(`Login successful! Welcome to the ${label}.`);
 }
+
