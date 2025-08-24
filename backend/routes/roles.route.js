@@ -1,5 +1,5 @@
-
-
+// backend/routes/roles.route.js
+// Defines URL endpoints for the 'roles' entity and maps them to controller functions.
 import express from 'express';
 import * as rolesController from '../controllers/roles.controller.js';
 
@@ -13,12 +13,13 @@ router
     .post(rolesController.createRole);
 
 
-// Route to get, update, and soft-delete a supecific employee by their ID
+// Route to get, update, and soft-delete a supecific role by their ID
 
 router
     .route('/:id')
     .get(rolesController.getRoleById)
-    .put(rolesController.updateRole) // put for full update
+    .put(rolesController.updateRole) // put for full 
+    // .delete(rolesController.deleteRole)
     //.patch(rolesController.softDeleteRole); // patch is ideal for partial update like soft delete
 
 export default router;

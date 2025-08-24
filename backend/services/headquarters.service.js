@@ -1,61 +1,52 @@
-// backend/services/roles.service.js
-// Responsibility: To interact directly with the database for the 'roles' entity.
-
+// backend/services/headquarters.service.js
+// Responsibility: To interact directly with the database for the 'headquarters' entity.
 import { query } from '../models/db_connection.js';
 
-// Find all roles that are not marked as deleted
+// Find all headquarters
 export const findAll = async () => {
-    const res = await query('SELECT * FROM headquarters ORDER BY role_name ASC');
+    const res = await query('SELECT * FROM headquarters ORDER BY name DESC');
     return res.rows;
 };
 
-// Find a single non-deleted role by their UUID
+// Find a single headquarters by their UUID
 export const findById = async (id) => {
     const res = await query('SELECT * FROM headquarters WHERE id = $1', [id]);
     return res.rows[0];
 };
 
-// Add a new role to the database
-export const create = async (roleData) => {
-    const {
-        role_name,
-        description,
-        role_area
-    } = roleData;
+// Add a new headquarters to the database
+export const create = async (headquartersData) => {
+    const { name } = headquartersData;
 
     const res = await query(
-        `INSERT INTO haeadquarters(name) 
-        VALUES ($1, $2, $3)
+        `INSERT INTO headquarters (name) 
+        VALUES ($1) 
         RETURNING id`,
-        [role_name, description, role_area]
+        [name]
     );
     return res.rows[0].id;
 };
 
-// Update a role's data
-export const update = async (id, roleData) => {
-    const {
-        role_name,
-        description,
-        role_area
-    } = roleData;
+// Update a headquarters data
+export const update = async (id, headquartersData) => {
+    const { name } = headquartersData;
 
     const res = await query(
-        `UPDATE roles SET
-            role_name = $1, description = $2, role_area = $3, updated_at = now()
-        WHERE id = $4
-        RETURNING id`,
-        [role_name, description, role_area, id]
+        `UPDATE headquarters SET
+            name = $1, 
+            updated_at = now()
+        WHERE id = $2
+        RETURNING *`,
+        [name, id]
     );
     return res.rows[0];
 };
 
-// Mark a role as deleted
-export const softDelete = async (id) => {
-    const res = await query(
-        'UPDATE roles SET is_deleted = true, updated_at = now() WHERE id = $1',
-        [id]
-    );
-    // rowCount is the number of rows affected by the query
-    return res.rowCount;
-};
+//// Delete a headquarters
+//export const deleteHeadquarters = async (id) => {
+//    const res = await query(
+//        'DELETE FROM headquarters WHERE id = $1',
+//        [id]
+//    );
+//    return res.rowCount;
+//};
