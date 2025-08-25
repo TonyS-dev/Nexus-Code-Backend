@@ -5,6 +5,7 @@ import morgan from "morgan";
 import employeesRoutes from "./../routes/employees.route.js";
 import rolesRoutes from './../routes/roles.route.js'
 import authRoutes from './../routes/auth.route.js';
+import identificationtype from '../routes/identification_type.route.js'
 // Custom Middleware to handle errors
 import { globalErrorHandler } from "./../middleware/globalErrorHandler.js";
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/employees', employeesRoutes);
 app.use('/roles', rolesRoutes);
+app.use('/idenfificatintype', )
 
 // Global Error Handler
 app.use(globalErrorHandler);
