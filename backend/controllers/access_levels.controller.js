@@ -59,7 +59,7 @@ export const updateAccessLeavel = async (req, res, next) =>{
     }
     res.status(200).json({
         id: updateAccessLvl.id,
-        message: 'Access leavel access leavel not found successfully'
+        message: 'leavel access leavel updated successfully'
     });
 };
 
