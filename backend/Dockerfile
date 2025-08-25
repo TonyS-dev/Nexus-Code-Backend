@@ -1,26 +1,24 @@
+# /backend/Dockerfile
 # Build Stage
 FROM node:current-alpine3.22 AS builder
 
-# Set the working directory inside the container.
 WORKDIR /usr/src/app
 
-# Copy dependency definition files.
-# The '*' ensures both package.json and package-lock.json are copied.
+# Define an argument to control dependency installation
+# By default, it will be 'production'
+ARG INSTALL_ENV=production
+
 COPY package*.json ./
 
-# Install only production dependencies to keep the image lightweight.
-RUN npm ci --only=production
+# Installs dependencies based on the argument
+# If INSTALL_ENV is 'development', it will install everything, including nodemon.
+RUN if [ "$INSTALL_ENV" = "development" ]; then npm install; else npm ci --only=production; fi
 
-# Copy the rest of your application's code to the working directory.
 COPY . .
-
-# Expose the port your Express application is listening on.
 EXPOSE 3000
 
-# Create a non-root user to run the application.
-# This is an important security measure.
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
-# The command to start your server.
-CMD [ "node", "server/index.js" ]
+# The default CMD will be for production, using your 'start' script.
+CMD [ "npm", "start" ]
