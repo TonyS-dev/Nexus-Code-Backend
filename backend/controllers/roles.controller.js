@@ -54,13 +54,13 @@ export const updateRole = async (req, res, next) =>{
     const {id} = req.params;
     const roleData = req.body;
     
-    const updateRol = await rolesService.update(id, roleData);
+    const updatedRole = await rolesService.update(id, roleData);
 
-    if(!updateRol){
+    if(!updatedRole){
         return res.status(404).json({ message: 'Role not found' });
     }
     res.status(200).json({
-        id: updateRol.id,
+        id: updatedRole.id,
         message: 'Role updated successfully'
     });
 };
