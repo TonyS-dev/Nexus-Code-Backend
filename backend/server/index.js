@@ -4,6 +4,7 @@ import express from "express"
 import morgan from "morgan";
 import employeesRoutes from "./../routes/employees.route.js";
 import rolesRoutes from './../routes/roles.route.js'
+import authRoutes from './../routes/auth.route.js';
 // Custom Middleware to handle errors
 import { globalErrorHandler } from "./../middleware/globalErrorHandler.js";
 
@@ -17,6 +18,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Routes
+app.use('/auth', authRoutes);
 app.use('/employees', employeesRoutes);
 app.use('/roles', rolesRoutes);
 
