@@ -17,7 +17,6 @@
     "cors": "^2.8.5",
     "cross-env": "^10.0.0",
     "csv-parser": "^3.2.0",
-    "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.1",
