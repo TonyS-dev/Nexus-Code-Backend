@@ -1,0 +1,36 @@
+:root{
+    --left-bg:rgb(11, 23, 76);
+    --input-border:rgb(160, 160, 208);
+    --input-border-focus:rgb(142, 99, 255);
+    --btn-bg:rgb(142,99,255);
+    --btn-hover:rgb(127, 80, 231);
+    --text-light:rgb(255, 255, 255);
+    --text-dark:rgb(34, 34, 34);
+    --shadow:rgb(0, 0, 0);
+}
+.theme-light{
+    --left-bg:rgb(255, 255, 255);
+    --input-border:rgb(204, 204, 204);
+    --input-border-focus: rgb(142, 99, 255);
+    --btn-bg:rgb(142, 99, 255);
+    --btn-hover:rgb(127, 80, 231);
+    --text-light:rgb(34, 34, 34);
+    --text-dark:rgb(34, 34, 34);
+    --shadow:rgba(0, 0, 0, 0.1);
+}
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+.body{
+    font-family:'Poppins','Segoe UI',sans-serif;
+    background-color:var(--dark);
+    color:var(--text-light);
+    min-height:100vh;
+    transition:background-color 0.3s ease;
+
+
+
+}
