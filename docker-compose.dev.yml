@@ -1,0 +1,21 @@
+# /docker-compose.dev.yml (For Development)
+services:
+  backend:
+    # Overrides the 'build' section to pass the INSTALL_ENV argument
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        - INSTALL_ENV=development # This will install nodemon and other devDependencies
+
+    # Overrides the startup command to use your 'dev' script
+    command: npm run dev
+    
+    # Adds volumes for real-time code synchronization
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+      
+    # Overrides the environment variable so the app knows it's in development
+    environment:
+      - NODE_ENV=development
