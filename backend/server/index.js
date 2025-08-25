@@ -9,6 +9,7 @@ import gendersRoutes from './../routes/genders.route.js'
 import employeeStatusesRoutes from './../routes/employee_statuses.route.js'
 import accessLevelsRoutes from './../routes/access_levels.route.js'
 import authRoutes from './../routes/auth.route.js';
+import identificationtype from '../routes/identification_type.route.js'
 // Custom Middleware to handle errors
 import { globalErrorHandler } from "./../middleware/globalErrorHandler.js";
 
@@ -22,13 +23,14 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Routes
-app.use('/auth', authRoutes);
+app.use('/login', authRoutes);
 app.use('/employees', employeesRoutes);
 app.use('/roles', rolesRoutes);
-app.use('/headquarter', headquarterRoutes);
+app.use('/headquarters', headquarterRoutes);
 app.use('/genders', gendersRoutes);
-app.use('/employeeStatuses', employeeStatusesRoutes);
-app.use('/accessLevels', accessLevelsRoutes);
+app.use('/employee-statuses', employeeStatusesRoutes);
+app.use('/access-levels', accessLevelsRoutes);
+app.use('/identification-type', identificationtype);
 
 // Global Error Handler
 app.use(globalErrorHandler);

@@ -1,13 +1,10 @@
 // backend/models/db_connection.js
-import dotenv from "dotenv";
 import { Pool } from "pg";
-
-dotenv.config();  // loads environment variables
 
 export const pool = new Pool({
     host: process.env.DB_HOST,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT ? Number(process.env.DB_PORT) : undefined,
+    port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 5432,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     // pg pool options
