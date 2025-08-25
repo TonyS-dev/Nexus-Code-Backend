@@ -54,34 +54,34 @@ export const updateRole = async (req, res, next) =>{
     const {id} = req.params;
     const roleData = req.body;
     
-    const updateRole = await rolesService.update(id, roleData);
+    const updateRol = await rolesService.update(id, roleData);
 
-    if(!updateRole){
+    if(!updateRol){
         return res.status(404).json({ message: 'Role not found' });
     }
     res.status(200).json({
-        id: updateRole.id,
+        id: updateRol.id,
         message: 'Role updated successfully'
     });
 };
 
 
-// DELETE role
-export const deleteRole = async (req, res, next) =>{
-    const {id} = req.params;
-    // Check if role exists
-    const existingRole = await rolesService.findById(id);
-    if(!existingRole){
-        return res.status(404).json({ message: 'Roles not found'});
-    }
-
-    const deleteRol = await rolesService.deleteRole(id);
-
-    if(deleteRol === 0){
-        return res.status(404).json({ message: 'Role not found'});
-    }
-    // 204 Not Content is a standard response for successful deletions with no body
-    res.status(204).send();
-}
+//// DELETE role
+//export const deleteRole = async (req, res, next) =>{
+//    const {id} = req.params;
+//    // Check if role exists
+//    const existingRole = await rolesService.findById(id);
+//    if(!existingRole){
+//        return res.status(404).json({ message: 'Roles not found'});
+//    }
+//
+//    const deleteRol = await rolesService.deleteRole(id);
+//
+//    if(deleteRol === 0){
+//        return res.status(404).json({ message: 'Role not found'});
+//    }
+//    // 204 Not Content is a standard response for successful deletions with no body
+//    res.status(204).send();
+//}
 
 
