@@ -1,48 +1,44 @@
 // backend/controllers/vacation_type.controller.js
-// Responsibility: To handle HTTP requests, validate input, and orchestrate responses for the 'access levels' entity.
+// Responsibility: To handle HTTP requests, validate input, and orchestrate responses for the 'vacation type' entity.
 import * as vacationTypeService  from '../services/vacation_type.service.js';
 
 
-// Get all non-delected access levels
+// Get all non-delected vacation type
 
-export const getAllAccessLevels = async (req, res, next) =>{
-    const accessLevels = await accessLevelsService.findAll();
-    res.status(200).json(accessLevels);
+export const getAllVactionType = async (req, res, next) =>{
+    const vacationType = await vacationTypeService.findAll();
+    res.status(200).json(vacationType);
 }
 
-// Get a single access level by their UUID
-export const getAccesLevelById = async (req, res, next) => {
+// Get a single vacation type by their UUID
+export const getVacationTypeById = async (req, res, next) => {
     const {id} = req.params;
-    const accesLevel = await accessLevelsService.findById(id);
+    const   vacationType = await vacationTypeService.findById(id);
 
-    if(!accesLevel){
-        return res.status(404).json({ message: 'Access Level not found' });
+    if(!vacationType){
+        return res.status(404).json({ message: 'Vacation type not found' });
     }
-    res.status(200).json(accesLevel);
+    res.status(200).json(vacationType);
 };
 
 
-// create a new Access leavel
-export const createAccesLeavel = async (req, res, next) =>{
+// create a new Vacation type
+export const createVacationType = async (req, res, next) =>{
     const {
-        name,
-        description
+        name
     } = req.body;
 
-    if(
-        !name ||
-        !description 
-    ){
+    if(!name){
         return res
             .status(400)
             .json({message: 'Missing requiered fields.'})
     }
 
-    // create new Access leavel
-    const newAccessLevelId = await accessLevelsService.create(req.body);
+    // create new vacation type
+    const newCreateVacation = await accessLevelsService.create(req.body);
         res.status(221).json({
-            id: newAccessLevelId,
-            message: ' Access level created successfully',
+            id: newCreateVacation,
+            message: 'created vacacion created successfully',
         });
 
 }
@@ -59,6 +55,6 @@ export const updateAccessLeavel = async (req, res, next) =>{
     }
     res.status(200).json({
         id: updateAccessLvl.id,
-        message: 'Access leavel access leavel not found successfully'
+        message: ' not found successfully'
     });
 };

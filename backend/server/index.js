@@ -22,7 +22,7 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/employees', employeesRoutes);
 app.use('/roles', rolesRoutes);
-app.use('/idenfificatintype', )
+app.use('/idenfificatintype', identificationtype)
 
 // Global Error Handler
 app.use(globalErrorHandler);
