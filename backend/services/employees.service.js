@@ -7,7 +7,7 @@ const SALT_ROUNDS = 10; // for hashing passwords
 // Find all employees that are not marked as deleted
 export const findAll = async () => {
     const res = await query(
-        'SELECT * FROM employees WHERE is_deleted = false ORDER BY first_name ASC'
+        'SELECT * FROM employees WHERE is_deleted = false ORDER BY first_name DESC'
     );
     return res.rows;
 };

@@ -4,6 +4,10 @@ import express from "express"
 import morgan from "morgan";
 import employeesRoutes from "./../routes/employees.route.js";
 import rolesRoutes from './../routes/roles.route.js'
+import headquarterRoutes from './../routes/headquarter.route.js'
+import gendersRoutes from './../routes/genders.route.js'
+import employeeStatusesRoutes from './../routes/employee_statuses.route.js'
+import accessLevelsRoutes from './../routes/access_levels.route.js'
 import authRoutes from './../routes/auth.route.js';
 // Custom Middleware to handle errors
 import { globalErrorHandler } from "./../middleware/globalErrorHandler.js";
@@ -21,6 +25,10 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/employees', employeesRoutes);
 app.use('/roles', rolesRoutes);
+app.use('/headquarter', headquarterRoutes);
+app.use('/genders', gendersRoutes);
+app.use('/employeeStatuses', employeeStatusesRoutes);
+app.use('/accessLevels', accessLevelsRoutes);
 
 // Global Error Handler
 app.use(globalErrorHandler);
