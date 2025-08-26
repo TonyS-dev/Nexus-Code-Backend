@@ -1,4 +1,4 @@
-import { query } from "../models/db_connection";
+import { query } from "../models/db_connection.js";
 
 export const findAll = async() => {
     const res = await query(`SELECT * FROM identification_types;`)
