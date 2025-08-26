@@ -63,23 +63,3 @@ export const updateAccessLeavel = async (req, res, next) =>{
     });
 };
 
-
-//// DELETE access level
-//export const deleteAccessLevel = async (req, res, next) =>{
-//    const {id} = req.params;
-//    // Check if access level exists
-//    const existingAccessLevel = await accessLevelsService.findById(id);
-//    if(!existingAccessLevel){
-//        return res.status(404).json({ message: 'Access level not found'});
-//    }
-//
-//    const deleteAccessLevel = await accessLevelsService.deleteAccessLevel(id);
-//
-//    if(deleteAccessLevel === 0){
-//        return res.status(404).json({ message: 'Access level not found'});
-//    }
-//    // 204 Not Content is a standard response for successful deletions with no body
-//    res.status(204).send();
-//}
-//
-

@@ -17,7 +17,6 @@ import approvalsRoutes from '../routes/approvals.route.js';
 import attachedDocumentsRoutes from '../routes/attached_documents.route.js';
 import notificationsRoutes from '../routes/notifications.route.js';
 import indexRoutes from '../routes/index.route.js';
-import headquartersRoutes from '../routes/headquarters.route.js';
 import vacationTypeRoute from '../routes/vacation_type.route.js';
 import leaveTypeRoute from '../routes/leave_type.route.js';
 import certificateTypeRoute from '../routes/certificate_type.route.js';

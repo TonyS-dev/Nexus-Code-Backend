@@ -48,11 +48,3 @@ export const update = async (id, accessLevelData) => {
     return res.rows[0];
 };
 
-//// Delete an access level
-//export const deleteAccessLevel = async (id) => {
-//    const res = await query(
-//        'DELETE FROM access_levels WHERE id = $1',
-//        [id]
-//    );
-//    return res.rowCount;
-//};

@@ -1,18 +1,18 @@
 -- =======================================================================
---                DATABASE CREATION SCRIPT
---                      NEXUS-CODE APPLICATION
+--                SCRIPT DE CREACIÓN DE BASE DE DATOS
+--                      APLICACIÓN NEXUS-CODE
 -- =======================================================================
 
 -- =======================================================================
--- INSTRUCTIONS: Run this script ONLY AFTER you have manually created the 
--- 'nexus_db' database and are connected to it.
+-- INSTRUCCIONES: Ejecuta este script SÓLO DESPUÉS de haber creado manualmente 
+-- la base de datos 'nexus_db' y estar conectado a ella.
 -- =======================================================================
 
--- Enable the uuid-ossp extension to generate UUIDs
+-- Habilita la extensión uuid-ossp para generar UUIDs
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- ========= TRIGGER FUNCTION FOR TIMESTAMPS =========
--- Function to update created_at and updated_at timestamps
+-- ========= FUNCIÓN DE DISPARADOR PARA MARCAS DE TIEMPO =========
+-- Función para actualizar las columnas created_at y updated_at
 CREATE OR REPLACE FUNCTION update_timestamp()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -29,10 +29,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- ========= SECTION 1: GENERAL CATALOG TABLES =========
--- These tables store predefined values to standardize information across the application.
+-- ========= SECCIÓN 1: TABLAS DE CATÁLOGO GENERAL =========
+-- Estas tablas almacenan valores predefinidos para estandarizar la información en la aplicación.
 
--- Stores employee statuses (e.g., 'Active', 'Inactive', 'On Leave').
+-- Almacena los estados de los empleados (ej. 'Activo', 'Inactivo', 'En licencia').
 CREATE TABLE IF NOT EXISTS public.employee_statuses (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     status_name character varying(100) NOT NULL UNIQUE,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS public.employee_statuses (
     CONSTRAINT chk_status_name_not_empty CHECK (status_name <> '')
 );
 
--- Stores genders.
+-- Almacena géneros.
 CREATE TABLE IF NOT EXISTS public.genders (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     gender_name character varying(100) NOT NULL UNIQUE,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS public.genders (
     CONSTRAINT chk_gender_name_not_empty CHECK (gender_name <> '')
 );
 
--- Stores system roles (e.g., 'Employee', 'Manager', 'HR Admin').
+-- Almacena roles del sistema (ej. 'Empleado', 'Gerente', 'Admin RH').
 CREATE TABLE IF NOT EXISTS public.roles (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     role_name character varying(40) NOT NULL UNIQUE,
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS public.roles (
     CONSTRAINT chk_role_area_not_empty CHECK (role_area <> '')
 );
 
--- Stores company locations or headquarters.
+-- Almacena ubicaciones o sedes de la empresa.
 CREATE TABLE IF NOT EXISTS public.headquarters (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     name character varying(100) NOT NULL,
@@ -69,12 +69,12 @@ CREATE TABLE IF NOT EXISTS public.headquarters (
     CONSTRAINT chk_name_not_empty CHECK (name <> '')
 );
 
--- Trigger for headquarters timestamps
+-- Disparador para marcas de tiempo en headquarters
 CREATE TRIGGER trigger_headquarters_timestamp
     BEFORE INSERT OR UPDATE ON public.headquarters
     FOR EACH ROW EXECUTE FUNCTION update_timestamp();
 
--- Stores general request statuses (e.g., 'Pending', 'Approved', 'Rejected').
+-- Almacena estados generales de solicitudes (ej. 'Pendiente', 'Aprobado', 'Rechazado').
 CREATE TABLE IF NOT EXISTS public.request_statuses (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     status_name character varying(100) NOT NULL UNIQUE,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS public.request_statuses (
     CONSTRAINT chk_status_name_not_empty CHECK (status_name <> '')
 );
 
--- Catalog for different types of leave (e.g., 'Medical', 'Personal', 'Bereavement').
+-- Catálogo para tipos de licencias (ej. 'Médica', 'Personal', 'Duelo').
 CREATE TABLE IF NOT EXISTS public.leave_types (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     name character varying(100) NOT NULL UNIQUE,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS public.leave_types (
     CONSTRAINT chk_name_not_empty CHECK (name <> '')
 );
 
--- Catalog for different types of certificates (e.g., 'Proof of Employment').
+-- Catálogo para tipos de certificados (ej. 'Constancia de Empleo').
 CREATE TABLE IF NOT EXISTS public.certificate_types (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     name character varying(100) NOT NULL UNIQUE,
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS public.certificate_types (
     CONSTRAINT chk_name_not_empty CHECK (name <> '')
 );
 
--- Catalog for identification types (e.g., 'National ID', 'Passport').
+-- Catálogo para tipos de identificación (ej. 'Cédula', 'Pasaporte').
 CREATE TABLE IF NOT EXISTS public.identification_types (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     type_name character varying(100) NOT NULL UNIQUE,
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS public.identification_types (
     CONSTRAINT chk_type_name_not_empty CHECK (type_name <> '')
 );
 
--- Catalog for vacation types (e.g., 'Statutory', 'Compensatory Time Off').
+-- Catálogo para tipos de vacaciones (ej. 'Estatutarias', 'Compensatorias').
 CREATE TABLE IF NOT EXISTS public.vacation_types (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     type_name character varying(100) NOT NULL UNIQUE,
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS public.vacation_types (
     CONSTRAINT chk_type_name_not_empty CHECK (type_name <> '')
 );
 
--- Catalog for user access levels within the application.
+-- Catálogo para niveles de acceso de usuarios en la aplicación.
 CREATE TABLE IF NOT EXISTS public.access_levels (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     level_name character varying(100) NOT NULL UNIQUE,
@@ -124,9 +124,26 @@ CREATE TABLE IF NOT EXISTS public.access_levels (
     CONSTRAINT chk_level_name_not_empty CHECK (level_name <> '')
 );
 
--- ========= SECTION 2: CORE EMPLOYEE TABLES =========
+-- ========= SECCIÓN 2: TABLAS PRINCIPALES DE EMPLEADOS =========
 
--- Main table for employees, consolidating personal, user, and salary data.
+-- Tabla para información de salarios de empleados
+CREATE TABLE IF NOT EXISTS public.employee_salaries (
+    id uuid NOT NULL DEFAULT uuid_generate_v4(),
+    salary_amount numeric(12, 2) NOT NULL,
+    effective_date date NOT NULL,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone,
+    CONSTRAINT employee_salaries_pkey PRIMARY KEY (id),
+    CONSTRAINT chk_salary_amount_positive CHECK (salary_amount > 0),
+    CONSTRAINT chk_effective_date_not_future CHECK (effective_date <= CURRENT_DATE)
+);
+
+-- Disparador para marcas de tiempo en employee_salaries
+CREATE TRIGGER trigger_employee_salaries_timestamp
+    BEFORE INSERT OR UPDATE ON public.employee_salaries
+    FOR EACH ROW EXECUTE FUNCTION update_timestamp();
+
+-- Tabla principal para empleados, consolidando datos personales y de usuario.
 CREATE TABLE IF NOT EXISTS public.employees (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     employee_code character varying(20) NOT NULL UNIQUE,
@@ -141,13 +158,12 @@ CREATE TABLE IF NOT EXISTS public.employees (
     hire_date timestamp without time zone NOT NULL,
     identification_type_id uuid,
     identification_number character varying(50),
-    manager_id uuid, -- Self-referencing FK to another employee
+    manager_id uuid, -- Clave foránea autorreferencial a otro empleado
     headquarters_id uuid NOT NULL,
     gender_id uuid,
     status_id uuid NOT NULL,
     access_level_id uuid,
-    salary_amount numeric(12, 2) NOT NULL, -- Added from employee_salaries
-    effective_date date NOT NULL, -- Added from employee_salaries
+    salary_id uuid, -- Nueva clave foránea que referencia employee_salaries
     created_at timestamp without time zone DEFAULT now(),
     updated_at timestamp without time zone,
     is_deleted boolean DEFAULT false,
@@ -158,21 +174,20 @@ CREATE TABLE IF NOT EXISTS public.employees (
     CONSTRAINT fk_employees_status FOREIGN KEY (status_id) REFERENCES public.employee_statuses(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT fk_employees_identification_type FOREIGN KEY (identification_type_id) REFERENCES public.identification_types(id) ON DELETE SET NULL ON UPDATE CASCADE,
     CONSTRAINT fk_employees_access_level FOREIGN KEY (access_level_id) REFERENCES public.access_levels(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT fk_employees_salary FOREIGN KEY (salary_id) REFERENCES public.employee_salaries(id) ON DELETE SET NULL ON UPDATE CASCADE,
     CONSTRAINT chk_employee_code_not_empty CHECK (employee_code <> ''),
     CONSTRAINT chk_first_name_not_empty CHECK (first_name <> ''),
     CONSTRAINT chk_last_name_not_empty CHECK (last_name <> ''),
     CONSTRAINT chk_email_not_empty CHECK (email <> ''),
-    CONSTRAINT chk_password_hash_not_empty CHECK (password_hash <> ''),
-    CONSTRAINT chk_salary_amount_positive CHECK (salary_amount > 0),
-    CONSTRAINT chk_effective_date_not_future CHECK (effective_date <= CURRENT_DATE)
+    CONSTRAINT chk_password_hash_not_empty CHECK (password_hash <> '')
 );
 
--- Trigger for employees timestamps
+-- Disparador para marcas de tiempo en employees
 CREATE TRIGGER trigger_employees_timestamp
     BEFORE INSERT OR UPDATE ON public.employees
     FOR EACH ROW EXECUTE FUNCTION update_timestamp();
 
--- Pivot table for the employee-role relationship (allows an employee to have multiple roles).
+-- Tabla pivote para la relación empleado-rol (permite que un empleado tenga múltiples roles).
 CREATE TABLE IF NOT EXISTS public.employee_roles (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     employee_id uuid NOT NULL,
@@ -183,10 +198,10 @@ CREATE TABLE IF NOT EXISTS public.employee_roles (
     UNIQUE (employee_id, role_id)
 );
 
--- ========= SECTION 3: REQUESTS STRUCTURE (SUPERTYPE/SUBTYPE) =========
+-- ========= SECCIÓN 3: ESTRUCTURA DE SOLICITUDES (SUPERTIPO/SUBTIPO) =========
 
--- 3.1: PARENT TABLE (SUPERTYPE)
--- Contains data common to all types of requests.
+-- 3.1: TABLA PADRE (SUPERTIPO)
+-- Contiene datos comunes a todos los tipos de solicitudes.
 CREATE TABLE IF NOT EXISTS public.requests (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     employee_id uuid NOT NULL,
@@ -200,13 +215,13 @@ CREATE TABLE IF NOT EXISTS public.requests (
     CONSTRAINT chk_request_type_not_empty CHECK (request_type <> '')
 );
 
--- Trigger for requests timestamps
+-- Disparador para marcas de tiempo en requests
 CREATE TRIGGER trigger_requests_timestamp
     BEFORE INSERT OR UPDATE ON public.requests
     FOR EACH ROW EXECUTE FUNCTION update_timestamp();
 
--- 3.2: CHILD TABLES (SUBTYPES)
--- Contain data specific to each request type.
+-- 3.2: TABLAS HIJAS (SUBTIPOS)
+-- Contienen datos específicos para cada tipo de solicitud.
 
 CREATE TABLE IF NOT EXISTS public.vacation_requests (
     id uuid NOT NULL,
@@ -250,9 +265,9 @@ CREATE TABLE IF NOT EXISTS public.certificate_requests (
     CONSTRAINT fk_certificate_requests_type FOREIGN KEY (certificate_type_id) REFERENCES public.certificate_types(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
--- ========= SECTION 4: DEPENDENT TABLES WITH REFERENTIAL INTEGRITY =========
+-- ========= SECCIÓN 4: TABLAS DEPENDIENTES CON INTEGRIDAD REFERENCIAL =========
 
--- Stores approval records, linked to the parent 'requests' table.
+-- Almacena registros de aprobación, vinculados a la tabla padre 'requests'.
 CREATE TABLE IF NOT EXISTS public.approvals (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     request_id uuid NOT NULL,
@@ -266,7 +281,7 @@ CREATE TABLE IF NOT EXISTS public.approvals (
     CONSTRAINT fk_approvals_status FOREIGN KEY (status_id) REFERENCES public.request_statuses(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
--- Stores information about documents attached to any request.
+-- Almacena información sobre documentos adjuntos a cualquier solicitud.
 CREATE TABLE IF NOT EXISTS public.attached_documents (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     request_id uuid NOT NULL,
@@ -285,14 +300,14 @@ CREATE TABLE IF NOT EXISTS public.attached_documents (
     CONSTRAINT chk_file_size_non_negative CHECK (file_size >= 0 OR file_size IS NULL)
 );
 
--- Trigger for attached_documents timestamps
+-- Disparador para marcas de tiempo en attached_documents
 CREATE TRIGGER trigger_attached_documents_timestamp
     BEFORE INSERT OR UPDATE ON public.attached_documents
     FOR EACH ROW EXECUTE FUNCTION update_timestamp();
 
--- ========= SECTION 5: AUXILIARY AND AUDIT TABLES =========
+-- ========= SECCIÓN 5: TABLAS AUXILIARES Y DE AUDITORÍA =========
 
--- Manages the annual vacation day balance for each employee.
+-- Gestiona el balance anual de días de vacaciones para cada empleado.
 CREATE TABLE IF NOT EXISTS public.vacation_balances (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     employee_id uuid NOT NULL,
@@ -307,7 +322,7 @@ CREATE TABLE IF NOT EXISTS public.vacation_balances (
     UNIQUE (employee_id, year)
 );
 
--- Stores the audit trail of important events for each employee.
+-- Almacena el historial de auditoría de eventos importantes para cada empleado.
 CREATE TABLE IF NOT EXISTS public.employee_history (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     employee_id uuid NOT NULL,
@@ -321,7 +336,7 @@ CREATE TABLE IF NOT EXISTS public.employee_history (
     CONSTRAINT chk_event_not_empty CHECK (event <> '')
 );
 
--- Stores in-app notifications for users.
+-- Almacena notificaciones dentro de la aplicación para los usuarios.
 CREATE TABLE IF NOT EXISTS public.notifications (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     recipient_id uuid NOT NULL,
@@ -329,10 +344,10 @@ CREATE TABLE IF NOT EXISTS public.notifications (
     is_read boolean DEFAULT false,
     related_url character varying(255),
     sent_date timestamp without time zone DEFAULT now(),
-		id_deleted boolean DEFAULT false,
+    is_deleted boolean DEFAULT false,
     CONSTRAINT notifications_pkey PRIMARY KEY (id),
     CONSTRAINT fk_notifications_recipient FOREIGN KEY (recipient_id) REFERENCES public.employees(id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT chk_message_not_empty CHECK (message <> '')
 );
 
--- ========= END OF SCRIPT =========
+-- ========= FIN DEL SCRIPT =========
