@@ -2,12 +2,13 @@
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
+import indexRoutes from './../routes/index.route.js';
 import employeesRoutes from "./../routes/employees.route.js";
 import rolesRoutes from './../routes/roles.route.js';
-import headquarterRoutes from './../routes/headquarter.route.js';
 import gendersRoutes from './../routes/genders.route.js';
 import employeeStatusesRoutes from './../routes/employee_statuses.route.js';
 import accessLevelsRoutes from './../routes/access_levels.route.js';
+import headquartersRoutes from '../routes/headquarters.route.js';
 import authRoutes from './../routes/auth.route.js';
 import identificationtype from '../routes/identification_type.route.js';
 import vacationTypeRoute from '../routes/vacation_type.route.js';
@@ -26,10 +27,11 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Routes
+app.use('/', indexRoutes); 
 app.use('/login', authRoutes);
 app.use('/employees', employeesRoutes);
 app.use('/roles', rolesRoutes);
-app.use('/headquarters', headquarterRoutes);
+app.use('/headquarters', headquartersRoutes);
 app.use('/genders', gendersRoutes);
 app.use('/employee-statuses', employeeStatusesRoutes);
 app.use('/access-levels', accessLevelsRoutes);

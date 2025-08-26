@@ -2,8 +2,12 @@
 // Defines URL endpoints for the 'employees' entity and maps them to controller functions.
 import express from 'express';
 import * as employeesController from '../controllers/employees.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+// Applies the 'protect' middleware to ALL routes in this file
+router.use(protect);
 
 // Route to get all employees and create a new employee
 router
