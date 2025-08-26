@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS public.access_levels (
 
 -- ========= SECTION 2: CORE EMPLOYEE TABLES =========
 
--- Main table for employees, consolidating personal and user data.
+-- Main table for employees, consolidating personal, user, and salary data.
 CREATE TABLE IF NOT EXISTS public.employees (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     employee_code character varying(20) NOT NULL UNIQUE,
@@ -146,6 +146,8 @@ CREATE TABLE IF NOT EXISTS public.employees (
     gender_id uuid,
     status_id uuid NOT NULL,
     access_level_id uuid,
+    salary_amount numeric(12, 2) NOT NULL, -- Added from employee_salaries
+    effective_date date NOT NULL, -- Added from employee_salaries
     created_at timestamp without time zone DEFAULT now(),
     updated_at timestamp without time zone,
     is_deleted boolean DEFAULT false,
@@ -160,31 +162,14 @@ CREATE TABLE IF NOT EXISTS public.employees (
     CONSTRAINT chk_first_name_not_empty CHECK (first_name <> ''),
     CONSTRAINT chk_last_name_not_empty CHECK (last_name <> ''),
     CONSTRAINT chk_email_not_empty CHECK (email <> ''),
-    CONSTRAINT chk_password_hash_not_empty CHECK (password_hash <> '')
+    CONSTRAINT chk_password_hash_not_empty CHECK (password_hash <> ''),
+    CONSTRAINT chk_salary_amount_positive CHECK (salary_amount > 0),
+    CONSTRAINT chk_effective_date_not_future CHECK (effective_date <= CURRENT_DATE)
 );
 
 -- Trigger for employees timestamps
 CREATE TRIGGER trigger_employees_timestamp
     BEFORE INSERT OR UPDATE ON public.employees
-    FOR EACH ROW EXECUTE FUNCTION update_timestamp();
-
--- Stores salary information for employees.
-CREATE TABLE IF NOT EXISTS public.employee_salaries (
-    id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    employee_id uuid NOT NULL,
-    salary_amount numeric(12, 2) NOT NULL,
-    effective_date date NOT NULL,
-    created_at timestamp without time zone DEFAULT now(),
-    updated_at timestamp without time zone,
-    CONSTRAINT employee_salaries_pkey PRIMARY KEY (id),
-    CONSTRAINT fk_employee_salaries_employee FOREIGN KEY (employee_id) REFERENCES public.employees(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT chk_salary_amount_positive CHECK (salary_amount > 0),
-    CONSTRAINT chk_effective_date_not_future CHECK (effective_date <= CURRENT_DATE)
-);
-
--- Trigger for employee_salaries timestamps
-CREATE TRIGGER trigger_employee_salaries_timestamp
-    BEFORE INSERT OR UPDATE ON public.employee_salaries
     FOR EACH ROW EXECUTE FUNCTION update_timestamp();
 
 -- Pivot table for the employee-role relationship (allows an employee to have multiple roles).
@@ -344,6 +329,7 @@ CREATE TABLE IF NOT EXISTS public.notifications (
     is_read boolean DEFAULT false,
     related_url character varying(255),
     sent_date timestamp without time zone DEFAULT now(),
+		id_deleted boolean DEFAULT false,
     CONSTRAINT notifications_pkey PRIMARY KEY (id),
     CONSTRAINT fk_notifications_recipient FOREIGN KEY (recipient_id) REFERENCES public.employees(id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT chk_message_not_empty CHECK (message <> '')
