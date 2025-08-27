@@ -24,10 +24,10 @@ export const getGenderById = async (req, res, next) => {
 
 // create a new gender
 export const createGender = async (req, res, next) =>{
-    const { gender_name } = req.body;
+    const { name } = req.body;
 
     if(
-        !gender_name
+        !name
     ){
         return res
             .status(400)

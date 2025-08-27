@@ -24,10 +24,10 @@ export const getEmployeeStatusById = async (req, res, next) => {
 
 // create a new Employee status
 export const createEmployeeStatus = async (req, res, next) =>{
-    const { status_name } = req.body;
+    const { name } = req.body;
 
     if(
-        !status_name
+        !name
     ){
         return res
             .status(400)
@@ -53,7 +53,7 @@ export const updateEmployeeStatus = async (req, res, next) =>{
         return res.status(404).json({ message: 'Employee status not found' });
     }
     res.status(200).json({
-        id: updateGender.id,
+        id: updateStatus.id,
         message: 'Employee status updated successfully'
     });
 };

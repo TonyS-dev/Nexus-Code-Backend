@@ -25,15 +25,15 @@ export const getRoleById = async (req, res, next) => {
 // create a new role
 export const createRole = async (req, res, next) =>{
     const {
-        roles_name,
+        name,
         description,
-        role_area
+        area
     } = req.body;
 
     if(
-        !roles_name ||
+        !name ||
         !description ||
-        !role_area
+        !area
     ){
         return res
             .status(400)
