@@ -1,0 +1,714 @@
+{
+	"info": {
+		"_postman_id": "6b3b4e9d-835a-4cb3-9139-08ffd8cd454c",
+		"name": "Nexus_Code_Production",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47894660",
+		"_collection_link": "https://alvaron-dev-7159017.postman.co/workspace/Alvaro-Noriega's-Workspace~d59758f6-f5a3-4380-8594-65891f1e5438/collection/47894660-6b3b4e9d-835a-4cb3-9139-08ffd8cd454c?action=share&source=collection_link&creator=47894660"
+	},
+	"item": [
+		{
+			"name": "index",
+			"item": [
+				{
+					"name": "apiReadme",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employees",
+			"item": [
+				{
+					"name": "getEmployees",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/employees",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEmployeeById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/employees/6f1cd3b6-d30f-4a86-b664-b54c4b6c10aa",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"employees",
+								"6f1cd3b6-d30f-4a86-b664-b54c4b6c10aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateEmployees",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/employees",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEmployee",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/employees/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"employees",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEmployee",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/employees/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"employees",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "getRoles",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/roles",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRoleById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/roles/7d3b8405-e6f2-4e61-a32e-96d38b908e66",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"roles",
+								"7d3b8405-e6f2-4e61-a32e-96d38b908e66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createRoles",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/roles",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRole",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/roles/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"roles",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "headquarters",
+			"item": [
+				{
+					"name": "getHeadquarters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/headquarters",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"headquarters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getHeadquarterById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/headquarters/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"headquarters",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createHeadquarter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/headquarters",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"headquarters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateHeadquarter",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/headquarters/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"headquarters",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"moises@nexus.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProductionURL}}/auth/login",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"moises@nexus.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProductionURL}}/auth/register",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "genders",
+			"item": [
+				{
+					"name": "getGenders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/genders",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"genders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getGenderById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/genders/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"genders",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createGenders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/genders",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"genders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateGender",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/genders/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"genders",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employeesStatuses",
+			"item": [
+				{
+					"name": "getEmployeeStatuses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/employeeStatuses",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"employeeStatuses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEmployeeStatusesById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/employeeStatuses/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"employeeStatuses",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createEmployeeStatuses",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/employeeStatuses",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"employeeStatuses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEmployeeStatuses",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/employeeStatuses/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"employeeStatuses",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "accessLevels",
+			"item": [
+				{
+					"name": "getAccessLevels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/accessLevels",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"accessLevels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAccessById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProductionURL}}/accessLevels/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"accessLevels",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createAccessLevels",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/accessLevels",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"accessLevels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAccessLevels",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseProductionURL}}/accessLevels/id",
+							"host": [
+								"{{baseProductionURL}}"
+							],
+							"path": [
+								"accessLevels",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseProductionURL",
+			"value": "https://api.riwi-nexus.app"
+		}
+	]
+}
