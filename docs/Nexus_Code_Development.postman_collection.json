@@ -1,0 +1,870 @@
+{
+	"info": {
+		"_postman_id": "b3c7da40-2278-4324-abcc-7483a53bf232",
+		"name": "Nexus_Code_Development",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47894660",
+		"_collection_link": "https://alvaron-dev-7159017.postman.co/workspace/Alvaro-Noriega's-Workspace~d59758f6-f5a3-4380-8594-65891f1e5438/collection/47569590-b3c7da40-2278-4324-abcc-7483a53bf232?action=share&source=collection_link&creator=47894660"
+	},
+	"item": [
+		{
+			"name": "index",
+			"item": [
+				{
+					"name": "apiReadme",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employees",
+			"item": [
+				{
+					"name": "getEmployees",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1ZWE2ZTk2LTYwZjgtNDNlYS1hY2QwLTM1YzI1N2VkMDFmMiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc1NjI2NzIzMCwiZXhwIjoxNzU2MjcwODMwfQ.NYcqYjQ3mVBuoEHCwKx1lKuGkQkEZO1uHoWFDdEYRN8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/employees",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEmployeeById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1ZWE2ZTk2LTYwZjgtNDNlYS1hY2QwLTM1YzI1N2VkMDFmMiIsInJvbGUiOiJBZG1pbiIsImFjY2Vzc0xldmVsIjoiQWRtaW4iLCJpYXQiOjE3NTYyNjcyNTUsImV4cCI6MTc1NjI3MDg1NX0.YLoIsMOvLSMknqu3wj61gpLfjSuaZfY83AOYJ6UpS-s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/employees/21448a94-8fdc-427c-96fb-c5c5d2a57e47",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"employees",
+								"21448a94-8fdc-427c-96fb-c5c5d2a57e47"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateEmployees",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1ZWE2ZTk2LTYwZjgtNDNlYS1hY2QwLTM1YzI1N2VkMDFmMiIsInJvbGUiOiJBZG1pbiIsImFjY2Vzc0xldmVsIjoiQWRtaW4iLCJpYXQiOjE3NTYyNjcyNTUsImV4cCI6MTc1NjI3MDg1NX0.YLoIsMOvLSMknqu3wj61gpLfjSuaZfY83AOYJ6UpS-s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employee_code\": \"ADMIN-001\",\n    \"first_name\": \"Moises\",\n    \"last_name\": \"Pereira\",\n    \"email\": \"moises@nexus.com\",\n    \"password\": \"password123\",\n    \"headquarters_id\": \"a0d2fba2-62e4-44ec-b5af-b9cdb36fd8b7\",\n    \"status_id\": \"507a82fb-f4d7-4e2e-8706-d0a2fddb2b17\",\n    \"access_level_id\": \"dcf1f8b2-0d98-4857-b0d0-870b3ff81381\",\n    \"hire_date\": \"2024-01-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/employees",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEmployee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1ZWE2ZTk2LTYwZjgtNDNlYS1hY2QwLTM1YzI1N2VkMDFmMiIsInJvbGUiOiJBZG1pbiIsImFjY2Vzc0xldmVsIjoiQWRtaW4iLCJpYXQiOjE3NTYyNjcyNTUsImV4cCI6MTc1NjI3MDg1NX0.YLoIsMOvLSMknqu3wj61gpLfjSuaZfY83AOYJ6UpS-s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employee_code\": \"ADMIN-003\",\n    \"first_name\": \"Moises Actualizado\",\n    \"middle_name\": \"A.\",\n    \"last_name\": \"Pereira\",\n    \"second_last_name\": null,  \n    \"email\": \"moises3@nexus.com\",\n    \"phone\": null,\n    \"birth_date\": \"1990-11-25\",\n    \"hire_date\": \"2024-02-01\",\n    \"identification_type_id\": null,\n    \"identification_number\": null,\n    \"manager_id\": null,\n    \"headquarters_id\": \"a0d2fba2-62e4-44ec-b5af-b9cdb36fd8b7\",\n    \"gender_id\": null,\n    \"status_id\": \"bd6032ee-51d3-458a-abcd-d0e4cb87904f\",\n    \"access_level_id\": \"dcf1f8b2-0d98-4857-b0d0-870b3ff81381\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/employees/21448a94-8fdc-427c-96fb-c5c5d2a57e47",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"employees",
+								"21448a94-8fdc-427c-96fb-c5c5d2a57e47"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEmployee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1ZWE2ZTk2LTYwZjgtNDNlYS1hY2QwLTM1YzI1N2VkMDFmMiIsInJvbGUiOiJBZG1pbiIsImFjY2Vzc0xldmVsIjoiQWRtaW4iLCJpYXQiOjE3NTYyNjcyNTUsImV4cCI6MTc1NjI3MDg1NX0.YLoIsMOvLSMknqu3wj61gpLfjSuaZfY83AOYJ6UpS-s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/employees/21448a94-8fdc-427c-96fb-c5c5d2a57e47",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"employees",
+								"21448a94-8fdc-427c-96fb-c5c5d2a57e47"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "getRoles",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/roles",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRoleById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/roles/225ae7b4-c15e-4c6b-b2c2-570b88e923de",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"roles",
+								"225ae7b4-c15e-4c6b-b2c2-570b88e923de"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createRoles",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Data Analyst\",\n    \"description\": \"Responsible for analyzing data and generating reports.\",\n    \"area\": \"Analytics\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/roles",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRole",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Senior Data Analyst (edited)\",\n    \"description\": \"Responsible for leading data analysis and generating key business insights.\",\n    \"area\": \"Business Intelligence\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/roles/7f782aea-633e-45f2-b411-268e5598e052",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"roles",
+								"7f782aea-633e-45f2-b411-268e5598e052"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "headquarters",
+			"item": [
+				{
+					"name": "getHeadquarters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/headquarters",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"headquarters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getHeadquarterById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/headquarters/1c03b8a3-02c8-4a84-8f4e-7a6c9a4f2da3",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"headquarters",
+								"1c03b8a3-02c8-4a84-8f4e-7a6c9a4f2da3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createHeadquarter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"North Branch Office\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/headquarters",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"headquarters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateHeadquarter",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"North Branch Office west-side (edited)\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/headquarters/adc7aefd-1ebd-40ce-9201-e5fbd153037b",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"headquarters",
+								"adc7aefd-1ebd-40ce-9201-e5fbd153037b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"moises@nexus.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/auth/login",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employee_code\": \"ADMIN-001\",\n    \"first_name\": \"Moises\",\n    \"last_name\": \"Pereira\",\n    \"email\": \"moises@nexus.com\",\n    \"password\": \"password123\",\n    \"headquarters_id\": \"d4611413-2ee2-4930-a116-aad80cd83c75\",\n    \"status_id\": \"c094831b-718b-4b92-aefc-6857257fdd5e\",\n    \"access_level_id\": \"238eea1a-bd37-4d64-9505-44126f1dcdb3\",\n    \"role_id\": \"13f328c0-9105-490b-8736-240baeba8a62\",\n    \"hire_date\": \"2024-01-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/auth/register",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "genders",
+			"item": [
+				{
+					"name": "getGenders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/genders",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"genders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getGenderById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/genders/e0eb8e67-1f56-4e28-8956-edca7b2e6010",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"genders",
+								"e0eb8e67-1f56-4e28-8956-edca7b2e6010"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createGenders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Prefer not to say\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/genders",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"genders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateGender",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Decline to state\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/genders/39222188-18c6-480d-96c2-ddcc71cc33a3",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"genders",
+								"39222188-18c6-480d-96c2-ddcc71cc33a3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employeesStatuses",
+			"item": [
+				{
+					"name": "getEmployeeStatuses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/employee-statuses",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"employee-statuses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEmployeeStatusesById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/employee-statuses/59ed91f7-f478-4ffd-8c9e-f21122c9d2dd",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"employee-statuses",
+								"59ed91f7-f478-4ffd-8c9e-f21122c9d2dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createEmployeeStatuses",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Terminated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/employee-statuses",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"employee-statuses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEmployeeStatuses",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Contract Ended\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/employee-statuses/a7236588-bd9a-4e9c-9e43-9903d824f72d",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"employee-statuses",
+								"a7236588-bd9a-4e9c-9e43-9903d824f72d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "accessLevels",
+			"item": [
+				{
+					"name": "getAccessLevels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/access-levels",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"access-levels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAccessById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/access-levels/bc187d7c-8533-482e-a420-38d31262f6c8",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"access-levels",
+								"bc187d7c-8533-482e-a420-38d31262f6c8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createAccessLevels",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Contractor\",\n    \"description\": \"Limited access for external contractors.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/access-levels",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"access-levels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAccessLevels",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"External Contractor\",\n    \"description\": \"Limited access for external contractors and vendors.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseDevelopmentURL}}/access-levels/d9ca189c-0ae7-48f7-a3ac-2a4c00d28770",
+							"host": [
+								"{{baseDevelopmentURL}}"
+							],
+							"path": [
+								"access-levels",
+								"d9ca189c-0ae7-48f7-a3ac-2a4c00d28770"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "identification-type",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseDevelopmentURL",
+			"value": "http://localhost:3000"
+		}
+	]
+}
