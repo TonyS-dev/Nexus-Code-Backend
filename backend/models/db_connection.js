@@ -13,11 +13,21 @@ export const pool = new Pool({
     connectionTimeoutMillis: process.env.DB_CONN_TIMEOUT_MS ? Number(process.env.DB_CONN_TIMEOUT_MS) : 2000
 });
 
-// Simple query helper
-export async function query(text, params) {
+/**
+ * Executes a SQL query. If a client is provided, it uses it (for transactions).
+ * Otherwise, it gets a client from the pool.
+ * @param {string} text - The SQL query text.
+ * @param {Array} [params] - The parameters for the query.
+ * @param {object} [client] - An optional existing database client.
+ * @returns {Promise<object>} The query result.
+ */
+export async function query(text, params, client) {
     const start = Date.now();
-    const res = await pool.query(text, params);
+    // Use the provided client if it exists, otherwise get one from the pool
+    const db = client || pool;
+    const res = await db.query(text, params);
     const duration = Date.now() - start;
+
     if (process.env.NODE_ENV === 'development') {
         console.log('Executed query', { text, duration, rows: res.rowCount });
     }

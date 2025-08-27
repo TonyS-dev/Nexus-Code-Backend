@@ -1,5 +1,4 @@
 // backend/controllers/employees.controller.js
-// Responsibility: To handle HTTP requests, validate input, and orchestrate responses for the 'employees' entity.
 import * as EmployeeService from '../services/employees.service.js';
 
 // Get all non-deleted employees
@@ -18,8 +17,10 @@ export const getEmployeeById = async (req, res, next) => {
     res.status(200).json(employee);
 };
 
-// Create a new employee
+// Create a new employee (basic info only)
 export const createEmployee = async (req, res, next) => {
+    // The service now handles transactions, so the controller is simpler.
+    // It passes the entire body, and the service decides what to do with it.
     const {
         employee_code,
         first_name,
@@ -28,6 +29,7 @@ export const createEmployee = async (req, res, next) => {
         password,
         headquarters_id,
         status_id,
+        hire_date,
     } = req.body;
     if (
         !employee_code ||
@@ -36,21 +38,21 @@ export const createEmployee = async (req, res, next) => {
         !email ||
         !password ||
         !headquarters_id ||
-        !status_id
+        !status_id ||
+        !hire_date
     ) {
-        return res
-            .status(400)
-            .json({ message: 'Missing required fields.' });
+        return res.status(400).json({ message: 'Missing required fields.' });
     }
 
-    // The service will handle hashing the password
+    // The create service now ONLY handles the employee table insertion.
+    // Role and salary are added via their own dedicated endpoints.
     const newEmployeeId = await EmployeeService.create(req.body);
-    res.status(221).json({
+    res.status(201).json({
         id: newEmployeeId,
-        message: 'Employee created successfully',
+        message:
+            'Employee created successfully. You can now assign roles and salaries.',
     });
 };
-
 
 // Update an existing employee
 export const updateEmployee = async (req, res, next) => {
@@ -67,13 +69,12 @@ export const updateEmployee = async (req, res, next) => {
     });
 };
 
-// Soft delete an employee (change is_deleted to true)
+// Soft delete an employee
 export const softDeleteEmployee = async (req, res, next) => {
     const { id } = req.params;
     const result = await EmployeeService.softDelete(id);
     if (result === 0) {
         return res.status(404).json({ message: 'Employee not found' });
     }
-    // 204 No Content is a standard response for successful deletions with no body
     res.status(204).send();
 };

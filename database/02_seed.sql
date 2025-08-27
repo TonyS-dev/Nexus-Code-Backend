@@ -1,25 +1,30 @@
 -- =======================================================================
 --                SEED SCRIPT FOR NEXUS-CODE DATABASE
--- This script populates ONLY the catalog tables with initial data.
--- User creation should be handled via the API to ensure correct password hashing.
+-- This script populates ONLY non-user tables with test data.
+-- Employee creation MUST be done via the API.
 -- =======================================================================
 
 DO $$
+DECLARE
+    hq_main_id uuid;
+    req_status_pending_id uuid;
+    req_status_approved_id uuid;
+    req_status_rejected_id uuid;
 BEGIN
 
     -- ========= SECTION 1: INSERT CATALOG DATA =========
 
-    INSERT INTO public.employee_statuses (status_name) VALUES 
+    INSERT INTO public.employee_statuses (name) VALUES 
         ('Active'), 
         ('Inactive'), 
         ('On Leave');
 
-    INSERT INTO public.genders (gender_name) VALUES 
+    INSERT INTO public.genders (name) VALUES 
         ('Male'), 
         ('Female'), 
         ('Non-binary');
 
-    INSERT INTO public.roles (role_name, description, role_area) VALUES 
+    INSERT INTO public.roles (name, description, area) VALUES 
         ('Employee', 'Standard employee access', 'General'), 
         ('Manager', 'Team Manager with approval rights', 'Management'), 
         ('Admin', 'System Administrator with full access', 'Administration'), 
@@ -29,7 +34,7 @@ BEGIN
         ('Main Office'),
         ('Remote');
     
-    INSERT INTO public.request_statuses (status_name) VALUES 
+    INSERT INTO public.request_statuses (name) VALUES 
         ('Pending'), 
         ('Approved'), 
         ('Rejected');
@@ -43,16 +48,16 @@ BEGIN
         ('Proof of Employment'), 
         ('Salary Certificate');
 
-    INSERT INTO public.identification_types (type_name) VALUES 
+    INSERT INTO public.identification_types (name) VALUES 
         ('National ID'), 
         ('Passport'),
         ('Foreign ID');
 
-    INSERT INTO public.vacation_types (type_name) VALUES 
+    INSERT INTO public.vacation_types (name) VALUES 
         ('Statutory'), 
         ('Compensatory');
 
-    INSERT INTO public.access_levels (level_name, description) VALUES 
+    INSERT INTO public.access_levels (name, description) VALUES 
         ('User', 'Basic user access'), 
         ('Admin', 'Full system access');
 

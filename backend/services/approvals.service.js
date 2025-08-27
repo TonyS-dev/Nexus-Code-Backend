@@ -15,7 +15,7 @@ export const findAll = async () => {
             r.request_type,
             e.first_name as approver_first_name,
             e.last_name as approver_last_name,
-            rs.status_name
+            rs.name
         FROM approvals a
         JOIN requests r ON a.request_id = r.id
         JOIN employees e ON a.approver_id = e.id
@@ -33,7 +33,7 @@ export const findById = async (id) => {
             r.request_type,
             e.first_name as approver_first_name,
             e.last_name as approver_last_name,
-            rs.status_name
+            rs.name
         FROM approvals a
         JOIN requests r ON a.request_id = r.id
         JOIN employees e ON a.approver_id = e.id
@@ -50,7 +50,7 @@ export const findByRequestId = async (requestId) => {
             a.*,
             e.first_name as approver_first_name,
             e.last_name as approver_last_name,
-            rs.status_name
+            rs.name
         FROM approvals a
         JOIN employees e ON a.approver_id = e.id
         JOIN request_statuses rs ON a.status_id = rs.id
@@ -149,7 +149,7 @@ export const findByApproverId = async (approverId) => {
             r.request_type,
             e.first_name as employee_first_name,
             e.last_name as employee_last_name,
-            rs.status_name
+            rs.name
         FROM approvals a
         JOIN requests r ON a.request_id = r.id
         JOIN employees e ON r.employee_id = e.id

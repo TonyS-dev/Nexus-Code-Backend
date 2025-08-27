@@ -4,7 +4,7 @@ import { query } from '../models/db_connection.js';
 
 // Find all access levels
 export const findAll = async () => {
-    const res = await query('SELECT * FROM access_levels ORDER BY level_name DESC');
+    const res = await query('SELECT * FROM access_levels ORDER BY name DESC');
     return res.rows;
 };
 
@@ -17,15 +17,15 @@ export const findById = async (id) => {
 // Add a new access level to the database
 export const create = async (accessLevelData) => {
     const {
-        level_name,
+        name,
         description
     } = accessLevelData;
 
     const res = await query(
-        `INSERT INTO access_levels (level_name, description) 
+        `INSERT INTO access_levels (name, description) 
         VALUES ($1, $2) 
         RETURNING id`,
-        [level_name, description]
+        [name, description]
     );
     return res.rows[0].id;
 };
@@ -33,17 +33,17 @@ export const create = async (accessLevelData) => {
 // Update an access level's data
 export const update = async (id, accessLevelData) => {
     const {
-        level_name,
+        name,
         description
     } = accessLevelData;
 
     const res = await query(
         `UPDATE access_levels SET
-            level_name = $1, 
+            name = $1, 
             description = $2
         WHERE id = $3
         RETURNING *`,
-        [level_name, description, id]
+        [name, description, id]
     );
     return res.rows[0];
 };

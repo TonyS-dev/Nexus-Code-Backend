@@ -12,7 +12,6 @@ router
     .get(rolesController.getAllRoles)
     .post(rolesController.createRole);
 
-
 // Route to get, update, and soft-delete a supecific role by their ID
 
 router

@@ -1,4 +1,4 @@
-import { query } from "../models/db_connection";
+import { query } from "../models/db_connection.js";
 
 export const findAll = async() => {
     const res = await query(`SELECT * FROM leave_types ORDER BY name ASC;`)
@@ -12,8 +12,8 @@ export const findById = async(id) => {
 
 
 export const create = async(leave_types) => {
-    const { name_type, requires_attachment } = leave_types
-    const res = await query(`INSERT INTO leave_types (name, requires_attachment) VALUES($1, $2);`, [name_type, requires_attachment] )
+    const { name, requires_attachment } = leave_types
+    const res = await query(`INSERT INTO leave_types (name, requires_attachment) VALUES($1, $2);`, [name, requires_attachment] )
     return res.rows[0].id;
 }
 
