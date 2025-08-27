@@ -1,7 +1,7 @@
 // backend/routes/certificate_type.route.js
 // Defines URL endpoints for the 'roles' entity and maps them to controller functions.
 import express from 'express';
-import * as certificateTypeController from '../controllers/cetificate_type.controller.js';
+import * as certificateTypeController from '../controllers/certificate_types.controller.js';
 
 const router = express.Router();
 

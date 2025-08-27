@@ -1,7 +1,7 @@
 // backend/routes/leave_type.route.js
 // Defines URL endpoints for the 'leave_type' entity and maps them to controller functions.
 import express from 'express';
-import * as leaveTypeController from '../controllers/leave_type.controller.js';
+import * as leaveTypeController from '../controllers/leave_types.controller.js';
 
 const router = express.Router();
 

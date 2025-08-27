@@ -1,7 +1,7 @@
 // backend/routes/identification_type.route.js
 // Defines URL endpoints for the 'employees' entity and maps them to controller functions.
 import express from 'express';
-import * as identificationTypeController from '../controllers/identification_type.controller.js';
+import * as identificationTypeController from '../controllers/identification_types.controller.js';
 
 const router = express.Router();
 

@@ -4,7 +4,7 @@ import { query } from '../models/db_connection.js';
 
 // Find all employee statuses
 export const findAll = async () => {
-    const res = await query('SELECT * FROM employee_statuses ORDER BY status_name DESC');
+    const res = await query('SELECT * FROM employee_statuses ORDER BY name DESC');
     return res.rows;
 };
 
@@ -16,27 +16,27 @@ export const findById = async (id) => {
 
 // Add a new employee status to the database
 export const create = async (statusData) => {
-    const { status_name } = statusData;
+    const { name } = statusData;
 
     const res = await query(
-        `INSERT INTO employee_statuses (status_name) 
+        `INSERT INTO employee_statuses (name) 
         VALUES ($1) 
         RETURNING id`,
-        [status_name]
+        [name]
     );
     return res.rows[0].id;
 };
 
 // Update an employee status data
 export const update = async (id, statusData) => {
-    const { status_name } = statusData;
+    const { name } = statusData;
 
     const res = await query(
         `UPDATE employee_statuses SET
-            status_name = $1
+            name = $1
         WHERE id = $2
         RETURNING *`,
-        [status_name, id]
+        [name, id]
     );
     return res.rows[0];
 };

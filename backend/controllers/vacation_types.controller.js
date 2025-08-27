@@ -1,6 +1,6 @@
 // backend/controllers/vacation_type.controller.js
 // Responsibility: To handle HTTP requests, validate input, and orchestrate responses for the 'vacation type' entity.
-import * as vacationTypeService  from '../services/vacation_type.service.js';
+import * as vacationTypeService  from '../services/vacation_types.service.js';
 
 
 // Get all non-delected vacation type

@@ -1,25 +1,31 @@
 // backend/routes/employees.route.js
-// Defines URL endpoints for the 'employees' entity and maps them to controller functions.
 import express from 'express';
 import * as employeesController from '../controllers/employees.controller.js';
 import { protect } from '../middleware/auth.middleware.js';
+import employeeRolesRouter from './roles.route.js';
+import employeeSalariesRouter from './employee_salaries.route.js';
 
 const router = express.Router();
 
-// Applies the 'protect' middleware to ALL routes in this file
+// Apply protection to all employee routes
 router.use(protect);
 
-// Route to get all employees and create a new employee
+// --- Nested Routes ---
+// Any route starting with /:employeeId/roles will be handled by employeeRolesRouter
+router.use('/:employeeId/roles', employeeRolesRouter);
+// Any route starting with /:employeeId/salaries will be handled by employeeSalariesRouter
+router.use('/:employeeId/salaries', employeeSalariesRouter);
+
+// --- Main Employee Routes ---
 router
     .route('/')
     .get(employeesController.getAllEmployees)
     .post(employeesController.createEmployee);
 
-// Route to get, update, and soft-delete a specific employee by their ID
 router
     .route('/:id')
     .get(employeesController.getEmployeeById)
-    .put(employeesController.updateEmployee) // PUT for full update
-    .patch(employeesController.softDeleteEmployee); // PATCH is ideal for partial updates like soft delete
+    .put(employeesController.updateEmployee)
+    .patch(employeesController.softDeleteEmployee);
 
 export default router;

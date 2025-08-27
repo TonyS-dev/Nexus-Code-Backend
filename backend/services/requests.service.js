@@ -14,7 +14,7 @@ export const findAll = async () => {
             r.updated_at,
             e.first_name,
             e.last_name,
-            rs.status_name
+            rs.name
         FROM requests r
         JOIN employees e ON r.employee_id = e.id
         JOIN request_statuses rs ON r.status_id = rs.id
@@ -36,7 +36,7 @@ export const findById = async (id) => {
             e.first_name,
             e.last_name,
             e.email,
-            rs.status_name
+            rs.name
         FROM requests r
         JOIN employees e ON r.employee_id = e.id
         JOIN request_statuses rs ON r.status_id = rs.id
@@ -209,7 +209,7 @@ export const findByEmployeeId = async (employeeId) => {
             r.request_type,
             r.status_id,
             r.created_at,
-            rs.status_name
+            rs.name
         FROM requests r
         JOIN request_statuses rs ON r.status_id = rs.id
         WHERE r.employee_id = $1

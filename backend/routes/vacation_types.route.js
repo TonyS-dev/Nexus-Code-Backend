@@ -1,7 +1,7 @@
 // backend/routes/vacation_type.router.js
 // Defines URL endpoints for the 'vacation_type' entity and maps them to controller functions.
 import express from 'express';
-import * as vacationTypeController from '../controllers/vacation_type.controller.js';
+import * as vacationTypeController from '../controllers/vacation_types.controller.js';
 
 const router = express.Router();
 
