@@ -1,4 +1,5 @@
 // backend/controllers/employees.controller.js
+// Responsibility: To handle HTTP requests, validate input, and orchestrate responses for the 'employees' entity.
 import * as EmployeeService from '../services/employees.service.js';
 
 // Get all non-deleted employees
@@ -17,7 +18,7 @@ export const getEmployeeById = async (req, res, next) => {
     res.status(200).json(employee);
 };
 
-// Create a new employee (basic info only)
+// Create a new employee
 export const createEmployee = async (req, res, next) => {
     // The service now handles transactions, so the controller is simpler.
     // It passes the entire body, and the service decides what to do with it.
@@ -44,7 +45,7 @@ export const createEmployee = async (req, res, next) => {
         return res.status(400).json({ message: 'Missing required fields.' });
     }
 
-    // The create service now ONLY handles the employee table insertion.
+    // The create service ONLY handles the employee table insertion.
     // Role and salary are added via their own dedicated endpoints.
     const newEmployeeId = await EmployeeService.create(req.body);
     res.status(201).json({
