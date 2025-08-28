@@ -97,24 +97,13 @@ create_csv "10_access_levels.csv" \
 238eea1a-bd37-4d64-9505-44126f1dcdb3,\"User\",\"Basic user access\"
 bc187d7c-8533-482e-a420-38d31262f6c8,\"Admin\",\"Full system access\""
 
-# --- 12. Employee Salaries ---
-create_csv "12_employee_salaries.csv" \
-"employee_id,salary_amount,effective_date
-b5ea6e96-60f8-43ea-acd0-35c257ed01f2,90000.00,2024-01-01
-e2f3a4b5-c6d7-e8f9-a0b1-c2d3e4f5a6b7,75000.00,2024-01-01
-f8a9b0c1-d2e3-f4a5-b6c7-d8e9f0a1b2c3,55000.00,2024-01-01
-a9b0c1d2-e3f4-a5b6-c7d8-e9f0a1b2c3d4,58000.00,2024-01-01
-b8a9b0c1-d2e3-f4a5-b6c7-d8e9f0a1b2c3,62000.00,2024-01-01"
-
-# --- 13. Employee Roles ---
-create_csv "13_employee_roles.csv" \
-"employee_id,role_id
-b5ea6e96-60f8-43ea-acd0-35c257ed01f2,d9ca189c-0ae7-48f7-a3ac-2a4c00d28770
-b5ea6e96-60f8-43ea-acd0-35c257ed01f2,b5c6d7e8-f9a0-b1c2-d3e4-f5a6b7c8d9e0
-e2f3a4b5-c6d7-e8f9-a0b1-c2d3e4f5a6b7,f2a3b4c5-d6e7-f89a-0b1c-2d3e4f5a6b7c
-e2f3a4b5-c6d7-e8f9-a0b1-c2d3e4f5a6b7,13f328c0-9105-490b-8736-240baeba8a62
-f8a9b0c1-d2e3-f4a5-b6c7-d8e9f0a1b2c3,13f328c0-9105-490b-8736-240baeba8a62
-a9b0c1d2-e3f4-a5b6-c7d8-e9f0a1b2c3d4,13f328c0-9105-490b-8736-240baeba8a62
-b8a9b0c1-d2e3-f4a5-b6c7-d8e9f0a1b2c3,13f328c0-9105-490b-8736-240baeba8a62"
+# --- 11. Users to Create ---
+create_csv "11_users_to_create.csv" \
+"employee_code,first_name,last_name,email,password,hire_date,headquarters_name,status_name,access_level_name,role_name,salary_amount,effective_date
+ADMIN-001,Admin,User,admin@nexus.com,password123,2022-01-10,\"Main Office\",Active,Admin,Admin,90000.00,2022-01-10
+MAN-001,Moises,Pereira,moises@nexus.com,password123,2022-06-15,\"Main Office\",Active,User,Manager,75000.00,2022-06-15
+EMP-001,Ana,Lopez,ana@nexus.com,password123,2023-02-20,\"Main Office\",Active,User,Employee,55000.00,2023-02-20
+EMP-002,Carlos,Ruiz,carlos@nexus.com,password123,2023-03-01,\"Main Office\",Active,User,Employee,58000.00,2023-03-01
+EMP-003,Sofia,Mendez,sofia@nexus.com,password123,2023-05-18,Remote,Active,User,Employee,62000.00,2023-05-18"
 
 echo -e "\n${GREEN}🎉 All CSV seed files have been generated in the '${DATA_DIR}' directory.${NC}"
