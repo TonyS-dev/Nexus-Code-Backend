@@ -1,0 +1,6 @@
+employee_code,first_name,last_name,email,password,hire_date,headquarters_name,status_name,access_level_name,role_name,salary_amount,effective_date
+ADMIN-001,Admin,User,admin@nexus.com,password123,2022-01-10,Main Office,Active,Admin,Admin,90000.00,2022-01-10
+MAN-001,Moises,Pereira,moises@nexus.com,password123,2022-06-15,Main Office,Active,User,Manager,75000.00,2022-06-15
+EMP-001,Ana,Lopez,ana@nexus.com,password123,2023-02-20,Main Office,Active,User,Employee,55000.00,2023-02-20
+EMP-002,Carlos,Ruiz,carlos@nexus.com,password123,2023-03-01,Main Office,Active,User,Employee,58000.00,2023-03-01
+EMP-003,Sofia,Mendez,sofia@nexus.com,password123,2023-05-18,Remote,Active,User,Employee,62000.00,2023-05-18
