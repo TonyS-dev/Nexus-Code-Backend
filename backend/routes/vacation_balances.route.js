@@ -2,8 +2,11 @@
 // Responsibility: Define routes for vacation balance management endpoints
 import express from 'express';
 import * as vacationBalancesController from '../controllers/vacation_balances.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+router.use(protect);
 
 // Routes for general vacation balances operations
 router

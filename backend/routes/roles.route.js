@@ -2,8 +2,11 @@
 // Defines URL endpoints for the 'roles' entity and maps them to controller functions.
 import express from 'express';
 import * as rolesController from '../controllers/roles.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+router.use(protect);
 
 // route to get all roles and create a new role
 

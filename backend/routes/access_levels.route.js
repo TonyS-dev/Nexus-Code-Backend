@@ -2,8 +2,10 @@
 // Defines URL endpoints for the 'access_level' entity and maps them to controller functions.
 import express from 'express';
 import * as accessLevelsController from '../controllers/access_levels.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+router.use(protect);
 
 // route to get all roles and create a new access level
 

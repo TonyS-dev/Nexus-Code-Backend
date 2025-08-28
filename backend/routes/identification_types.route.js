@@ -2,8 +2,11 @@
 // Defines URL endpoints for the 'employees' entity and maps them to controller functions.
 import express from 'express';
 import * as identificationTypeController from '../controllers/identification_types.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+router.use(protect);
 
 // Route to get all identification type and create a new identification type
 
