@@ -2,8 +2,10 @@
 // Responsibility: Define routes for approvals endpoints
 import express from 'express';
 import * as approvalsController from '../controllers/approvals.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+router.use(protect);
 
 // Routes for general approval operations
 router

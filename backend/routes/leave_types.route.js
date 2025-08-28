@@ -2,8 +2,11 @@
 // Defines URL endpoints for the 'leave_type' entity and maps them to controller functions.
 import express from 'express';
 import * as leaveTypeController from '../controllers/leave_types.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+router.use(protect);
 
 // route to get all leave type and create a new role
 

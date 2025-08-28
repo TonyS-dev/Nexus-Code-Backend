@@ -2,8 +2,11 @@
 // Responsibility: Define routes for notifications endpoints
 import express from 'express';
 import * as notificationsController from '../controllers/notifications.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+router.use(protect);
 
 // Routes for general notification operations
 router

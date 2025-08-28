@@ -2,8 +2,11 @@
 // Defines URL endpoints for the 'vacation_type' entity and maps them to controller functions.
 import express from 'express';
 import * as vacationTypeController from '../controllers/vacation_types.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+router.use(protect);
 
 // route to get all vacation types and create a new role
 
