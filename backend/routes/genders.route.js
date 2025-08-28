@@ -2,8 +2,11 @@
 // Defines URL endpoints for the 'gender' entity and maps them to controller functions.
 import express from 'express';
 import * as genderController from '../controllers/genders.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+router.use(protect);
 
 // route to get all gender and create a new role
 

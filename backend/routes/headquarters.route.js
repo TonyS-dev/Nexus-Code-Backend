@@ -2,8 +2,11 @@
 // Defines URL endpoints for the 'Headquarter' entity and maps them to controller functions.
 import express from 'express';
 import * as headquarterController from '../controllers/headquarters.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+router.use(protect);
 
 // route to get all Headquarter and create a new role
 

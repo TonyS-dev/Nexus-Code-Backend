@@ -2,8 +2,11 @@
 // Responsibility: Define routes for requests endpoints
 import express from 'express';
 import * as requestsController from '../controllers/requests.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
+
+router.use(protect);
 
 // Routes for general requests operations
 router
