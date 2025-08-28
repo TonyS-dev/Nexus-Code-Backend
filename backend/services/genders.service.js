@@ -4,7 +4,7 @@ import { query } from '../models/db_connection.js';
 
 // Find all genders
 export const findAll = async () => {
-    const res = await query('SELECT * FROM genders ORDER BY gender_name DESC');
+    const res = await query('SELECT * FROM genders ORDER BY name DESC');
     return res.rows;
 };
 
@@ -16,27 +16,27 @@ export const findById = async (id) => {
 
 // Add a new gender to the database
 export const create = async (genderData) => {
-    const { gender_name } = genderData;
+    const { name } = genderData;
 
     const res = await query(
-        `INSERT INTO genders (gender_name) 
+        `INSERT INTO genders (name) 
         VALUES ($1) 
         RETURNING id`,
-        [gender_name]
+        [name]
     );
     return res.rows[0].id;
 };
 
 // Update a gender's data
 export const update = async (id, genderData) => {
-    const { gender_name } = genderData;
+    const { name } = genderData;
 
     const res = await query(
         `UPDATE genders SET
-            gender_name = $1
+            name = $1
         WHERE id = $2
         RETURNING *`,
-        [gender_name, id]
+        [name, id]
     );
     return res.rows[0];
 };

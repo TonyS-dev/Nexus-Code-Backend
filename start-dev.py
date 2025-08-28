@@ -3,7 +3,7 @@ import subprocess
 import sys
 import os
 
-# --- ANSI Color Codes for Output ---
+# --- ANSI Color Codes for Output (works on Linux, macOS, and modern Windows terminals) ---
 GREEN = '\033[92m'
 YELLOW = '\033[93m'
 BLUE = '\033[94m'
@@ -18,7 +18,7 @@ def run_command(command, capture_output=False):
     """Executes a shell command and exits on failure."""
     try:
         print_message(f"▶️  Running: {' '.join(command)}", YELLOW)
-        subprocess.run(command, check=True, capture_output=capture_output, text=True)
+        subprocess.run(command, check=True, capture_output=capture_output, text=True, shell=(os.name == 'nt'))
     except subprocess.CalledProcessError as e:
         print_message(f"❌ Error executing command: {e}", RED)
         sys.exit(1)
@@ -32,30 +32,27 @@ def main():
     print_message("🚀 Starting Nexus Development Environment...", BLUE)
     print_message("===========================================", BLUE)
 
-    # Define the Docker Compose command for development
     compose_command = [
         "docker", "compose",
         "-f", "docker-compose.yml",
         "-f", "docker-compose.dev.yml",
-        "up",
-        "--build",
-        "-d"
+        "up", "--build", "-d"
     ]
     
     run_command(compose_command)
 
     print_message("\n✅ Development environment started successfully!", GREEN)
     
-    db_port = os.getenv('DB_PORT', '5432')
-    backend_port = os.getenv('BACKEND_PORT', '3000')
+    db_port = os.getenv('DB_PORT', '5435')
+    backend_port = os.getenv('BACKEND_PORT', '3001')
 
     print_message("\n--- Service Access ---", BLUE)
-    print_message(f"📦 Database (PostgreSQL) available at: {YELLOW}localhost:{db_port}{ENDC}")
-    print_message(f"⚙️  Backend API available at: {YELLOW}http://localhost:{backend_port}{ENDC}")
+    print_message(f"📦 Database (PostgreSQL) available at: {YELLOW}localhost:{db_port}")
+    print_message(f"⚙️  Backend API available at: {YELLOW}http://localhost:{backend_port}")
 
     print_message("\n--- Useful Commands ---", BLUE)
-    print_message(f"📋 View real-time logs: {YELLOW}docker compose logs -f{ENDC}")
-    print_message(f"🛑 Stop the environment: {YELLOW}python stop-dev.py{ENDC}")
+    print_message(f"📋 View real-time logs: {YELLOW}docker compose logs -f")
+    print_message(f"🛑 Stop the environment: {YELLOW}python stop-dev.py")
 
 if __name__ == "__main__":
     main()

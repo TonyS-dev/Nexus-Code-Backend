@@ -5,7 +5,7 @@ import { query } from '../models/db_connection.js';
 
 // Find all roles
 export const findAll = async () => {
-    const res = await query('SELECT * FROM roles ORDER BY role_name DESC');
+    const res = await query('SELECT * FROM roles ORDER BY name DESC');
     return res.rows;
 };
 
@@ -18,16 +18,16 @@ export const findById = async (id) => {
 // Add a new role to the database
 export const create = async (roleData) => {
     const {
-        role_name,
+        name,
         description,
-        role_area
+        area
     } = roleData;
 
     const res = await query(
-        `INSERT INTO roles (role_name, description, role_area) 
+        `INSERT INTO roles (name, description, area) 
         VALUES ($1, $2, $3) 
         RETURNING id`,
-        [role_name, description, role_area]
+        [name, description, area]
     );
     return res.rows[0].id;
 };
@@ -35,19 +35,19 @@ export const create = async (roleData) => {
 // Update a role's data
 export const update = async (id, roleData) => {
     const {
-        role_name,
+        name,
         description,
-        role_area
+        area
     } = roleData;
 
     const res = await query(
         `UPDATE roles SET
-            role_name = $1, 
+            name = $1, 
             description = $2, 
-            role_area = $3
+            area = $3
         WHERE id = $4
         RETURNING *`,
-        [role_name, description, role_area, id]
+        [name, description, area, id]
     );
     return res.rows[0];
 };

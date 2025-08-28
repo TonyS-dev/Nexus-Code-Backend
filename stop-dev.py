@@ -1,11 +1,11 @@
 # stop-dev.py
 import subprocess
 import sys
+import os
 
 # --- ANSI Color Codes for Output ---
 YELLOW = '\033[93m'
 BLUE = '\033[94m'
-RED = '\033[91m'
 ENDC = '\033[0m'
 
 def print_message(message, color=ENDC):
@@ -13,10 +13,10 @@ def print_message(message, color=ENDC):
     print(f"{color}{message}{ENDC}")
 
 def run_command(command):
-    """Executes a shell command and exits on failure."""
+    """Executes a shell command, compatible with Windows."""
     try:
         print_message(f"▶️  Running: {' '.join(command)}", YELLOW)
-        subprocess.run(command, check=True)
+        subprocess.run(command, check=True, shell=(os.name == 'nt'))
     except (subprocess.CalledProcessError, FileNotFoundError):
         print_message(f"⚠️  Could not execute command. Environment might already be down.", YELLOW)
 
@@ -26,7 +26,6 @@ def main():
     print_message("🛑 Stopping Nexus Development Environment...", BLUE)
     print_message("=============================================", BLUE)
 
-    # Define the command to stop the development services
     compose_command = [
         "docker", "compose",
         "-f", "docker-compose.yml",

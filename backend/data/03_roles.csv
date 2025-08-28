@@ -1,0 +1,5 @@
+id,name,description,area
+13f328c0-9105-490b-8736-240baeba8a62,Employee,"Standard employee access","General"
+f2a3b4c5-d6e7-f89a-0b1c-2d3e4f5a6b7c,Manager,"Team Manager with approval rights","Management"
+d9ca189c-0ae7-48f7-a3ac-2a4c00d28770,Admin,"System Administrator with full access","Administration"
+b5c6d7e8-f9a0-b1c2-d3e4-f5a6b7c8d9e0,HR,"Human Resources personnel","HR"
