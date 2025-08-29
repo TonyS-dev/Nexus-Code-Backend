@@ -201,7 +201,7 @@ export const updateRequestStatus = async (id, statusId) => {
     return res.rows[0];
 };
 
-// Get requests by employee
+// Get requests by employee with detailed data
 export const findByEmployeeId = async (employeeId) => {
     const res = await query(`
         SELECT 
@@ -209,9 +209,21 @@ export const findByEmployeeId = async (employeeId) => {
             r.request_type,
             r.status_id,
             r.created_at,
-            rs.name
+            rs.name,
+            -- Vacation request details
+            vr.start_date as vacation_start_date,
+            vr.end_date as vacation_end_date,
+            vr.days_requested,
+            -- Leave request details  
+            lr.start_date as leave_start_date,
+            lr.end_date as leave_end_date,
+            -- Certificate requests don't have date ranges
+            cr.id as certificate_id
         FROM requests r
         JOIN request_statuses rs ON r.status_id = rs.id
+        LEFT JOIN vacation_requests vr ON r.id = vr.id AND r.request_type = 'vacation'
+        LEFT JOIN leave_requests lr ON r.id = lr.id AND r.request_type = 'leave'
+        LEFT JOIN certificate_requests cr ON r.id = cr.id AND r.request_type = 'certificate'
         WHERE r.employee_id = $1
         ORDER BY r.created_at DESC
     `, [employeeId]);
