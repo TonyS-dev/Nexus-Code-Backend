@@ -30,7 +30,7 @@ import attachedDocumentsRoutes from '../routes/attached_documents.route.js';
 import notificationsRoutes from '../routes/notifications.route.js';
 import vacationBalancesRoutes from '../routes/vacation_balances.route.js';
 import requestStatusesRoutes from '../routes/request_statuses.route.js';
-import notificationsRoutes from './routes/notifications.routes.js';
+import notificationsRoutes from '../routes/notifications.route.js';
 
 
 // Custom Middleware
