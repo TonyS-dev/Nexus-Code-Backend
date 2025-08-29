@@ -29,6 +29,7 @@ import vacationTypeRoutes from '../routes/vacation_types.route.js';
 import attachedDocumentsRoutes from '../routes/attached_documents.route.js';
 import notificationsRoutes from '../routes/notifications.route.js';
 import vacationBalancesRoutes from '../routes/vacation_balances.route.js';
+import employeeHistories  from '../routes/employee_histories.route.js';
 
 // Custom Middleware
 import { globalErrorHandler } from '../middleware/globalErrorHandler.js';
@@ -66,6 +67,7 @@ app.use('/certificate-types', certificateTypeRoutes);
 app.use('/documents', attachedDocumentsRoutes);
 app.use('/notifications', notificationsRoutes);
 app.use('/vacation-balances', vacationBalancesRoutes);
+app.use('/employee-histories', employeeHistories);
 
 // --- Error Handling ---
 app.use(globalErrorHandler);
