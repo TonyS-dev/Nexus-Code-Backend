@@ -2,7 +2,7 @@
  * @file notifications.service.js
  * @description Database service for notifications management
  */
-import { query } from '../config/database.js';
+import { query } from '../models/db_connection.js';
 
 // Get notifications for a specific user
 export const findByRecipientId = async (recipientId) => {

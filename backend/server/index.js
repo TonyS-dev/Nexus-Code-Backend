@@ -30,6 +30,8 @@ import attachedDocumentsRoutes from '../routes/attached_documents.route.js';
 import notificationsRoutes from '../routes/notifications.route.js';
 import vacationBalancesRoutes from '../routes/vacation_balances.route.js';
 import requestStatusesRoutes from '../routes/request_statuses.route.js';
+import notificationsRoutes from './routes/notifications.routes.js';
+
 
 // Custom Middleware
 import { globalErrorHandler } from '../middleware/globalErrorHandler.js';
@@ -68,6 +70,7 @@ app.use('/documents', attachedDocumentsRoutes);
 app.use('/notifications', notificationsRoutes);
 app.use('/vacation-balances', vacationBalancesRoutes);
 app.use('/request-statuses', requestStatusesRoutes);
+app.use('/notifications', notificationsRoutes);
 
 // --- Error Handling ---
 app.use(globalErrorHandler);
