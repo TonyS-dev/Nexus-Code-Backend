@@ -1,43 +1,26 @@
-// backend/routes/notifications.routes.js
-// Responsibility: Define routes for notifications endpoints
-import express from 'express';
+/**
+ * @file notifications.routes.js
+ * @description Routes for notifications management
+ */
+import { Router } from 'express';
+import { authenticateToken } from '../middleware/auth.middleware.js';
 import * as notificationsController from '../controllers/notifications.controller.js';
-import { protect } from '../middleware/auth.middleware.js';
 
-const router = express.Router();
+const router = Router();
 
-router.use(protect);
+// All notification routes require authentication
+router.use(authenticateToken);
 
-// Routes for general notification operations
-router
-    .route('/')
-    .get(notificationsController.getAllNotifications)
-    .post(notificationsController.createNotification);
+// Get all notifications for current user
+router.get('/', notificationsController.getUserNotifications);
 
-// Routes for notification counts by user (must be before /user/:userId to avoid conflicts)
-router
-    .route('/user/:userId/counts')
-    .get(notificationsController.getNotificationCounts);
+// Get unread count
+router.get('/unread-count', notificationsController.getUnreadCount);
 
-// Routes for marking all notifications as read for a user
-router
-    .route('/user/:userId/read')
-    .patch(notificationsController.markAllNotificationsAsRead);
+// Mark notification as read
+router.patch('/:id/read', notificationsController.markAsRead);
 
-// Routes for notifications by specific user
-router
-    .route('/user/:userId')
-    .get(notificationsController.getNotificationsByUser);
-
-// Routes for marking a specific notification as read
-router
-    .route('/:id/read')
-    .patch(notificationsController.markNotificationAsRead);
-
-// Routes for specific notification by ID (must be last to avoid conflicts)
-router
-    .route('/:id')
-    .get(notificationsController.getNotificationById)
-    //.delete(notificationsController.deleteNotification);
+// Mark all notifications as read
+router.patch('/mark-all-read', notificationsController.markAllAsRead);
 
 export default router;
