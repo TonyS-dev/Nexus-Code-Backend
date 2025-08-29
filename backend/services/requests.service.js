@@ -217,3 +217,40 @@ export const findByEmployeeId = async (employeeId) => {
     `, [employeeId]);
     return res.rows;
 };
+
+// Helper functions to get specific request type data
+const getVacationRequestData = async (requestId) => {
+    const res = await query(`
+        SELECT 
+            vr.*,
+            vt.name as vacation_type_name
+        FROM vacation_requests vr
+        JOIN vacation_types vt ON vr.vacation_type_id = vt.id
+        WHERE vr.id = $1
+    `, [requestId]);
+    return res.rows[0];
+};
+
+const getLeaveRequestData = async (requestId) => {
+    const res = await query(`
+        SELECT 
+            lr.*,
+            lt.name as leave_type_name
+        FROM leave_requests lr
+        JOIN leave_types lt ON lr.leave_type_id = lt.id
+        WHERE lr.id = $1
+    `, [requestId]);
+    return res.rows[0];
+};
+
+const getCertificateRequestData = async (requestId) => {
+    const res = await query(`
+        SELECT 
+            cr.*,
+            ct.name as certificate_type_name
+        FROM certificate_requests cr
+        JOIN certificate_types ct ON cr.certificate_type_id = ct.id
+        WHERE cr.id = $1
+    `, [requestId]);
+    return res.rows[0];
+};

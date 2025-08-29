@@ -65,9 +65,11 @@ export const createVacationRequest = async (req, res, next) => {
         status_id
     };
     const requestId = await requestsService.createVacationRequest(requestData);
-    const newRequest = await requestsService.findById(requestId);
     
-    res.status(201).json(newRequest);
+    res.status(201).json({
+        id: requestId,
+        message: 'Vacation request created successfully'
+    });
 
 };
 
@@ -113,9 +115,11 @@ export const createLeaveRequest = async (req, res, next) => {
         status_id
     };
     const requestId = await requestsService.createLeaveRequest(requestData);
-    const newRequest = await requestsService.findById(requestId);
     
-    res.status(201).json(newRequest);
+    res.status(201).json({
+        id: requestId,
+        message: 'Leave request created successfully'
+    });
 };
 
 // POST /api/requests/certificate - Create a certificate request
@@ -144,9 +148,11 @@ export const createCertificateRequest = async (req, res, next) => {
         status_id
     };
     const requestId = await requestsService.createCertificateRequest(requestData);
-    const newRequest = await requestsService.findById(requestId);
     
-    res.status(201).json(newRequest);
+    res.status(201).json({
+        id: requestId,
+        message: 'Certificate request created successfully'
+    });
 
 };
 
