@@ -4,6 +4,7 @@ import * as employeesController from '../controllers/employees.controller.js';
 import { protect } from '../middleware/auth.middleware.js';
 import employeeRolesRouter from './roles.route.js';
 import employeeSalariesRouter from './employee_salaries.route.js';
+import * as historyController from '../controllers/employee_histories.controller.js';
 
 const router = express.Router();
 
@@ -15,6 +16,10 @@ router.use(protect);
 router.use('/:employeeId/roles', employeeRolesRouter);
 // Any route starting with /:employeeId/salaries will be handled by employeeSalariesRouter
 router.use('/:employeeId/salaries', employeeSalariesRouter);
+
+router
+    .route('/:employeeId/history')
+    .get(historyController.getHistoryByEmployeeId);
 
 // --- Main Employee Routes ---
 router
