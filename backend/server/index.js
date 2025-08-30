@@ -69,7 +69,6 @@ app.use('/documents', attachedDocumentsRoutes);
 app.use('/notifications', notificationsRoutes);
 app.use('/vacation-balances', vacationBalancesRoutes);
 app.use('/request-statuses', requestStatusesRoutes);
-app.use('/notifications', notificationsRoutes);
 
 // --- Error Handling ---
 app.use(globalErrorHandler);
