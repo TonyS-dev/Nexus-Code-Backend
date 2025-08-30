@@ -3,13 +3,13 @@
  * @description Routes for notifications management
  */
 import { Router } from 'express';
-import { authenticateToken } from '../middleware/auth.middleware.js';
+import { protect } from '../middleware/auth.middleware.js';
 import * as notificationsController from '../controllers/notifications.controller.js';
 
 const router = Router();
 
 // All notification routes require authentication
-router.use(authenticateToken);
+router.use(protect);
 
 // Get all notifications for current user
 router.get('/', notificationsController.getUserNotifications);
