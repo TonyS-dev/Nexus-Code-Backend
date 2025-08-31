@@ -1,6 +1,7 @@
 // backend/services/employees.service.js
 import { pool, query } from '../models/db_connection.js';
 import bcrypt from 'bcrypt';
+import { emptyStringToNull } from '../utils/utils.js';
 
 const SALT_ROUNDS = 10;
 
@@ -120,28 +121,28 @@ export const create = async (employeeData) => {
             [
                 employee_code,
                 first_name,
-                middle_name,
+                emptyStringToNull(middle_name),
                 last_name,
-                second_last_name,
+                emptyStringToNull(second_last_name),
                 email,
                 password_hash,
-                phone,
-                birth_date,
-                hire_date,
-                identification_type_id,
-                identification_number,
-                manager_id,
-                headquarters_id,
-                gender_id,
-                status_id,
-                access_level_id,
+                phone, // Now required - no need for emptyStringToNull
+                birth_date, // Now required - no need for emptyStringToNull
+                hire_date, // Required field
+                identification_type_id, // Now required - no need for emptyStringToNull
+                identification_number, // Now required - no need for emptyStringToNull
+                emptyStringToNull(manager_id),
+                headquarters_id, // Required field
+                gender_id, // Now required - no need for emptyStringToNull
+                status_id, // Required field
+                access_level_id, // Now required - no need for emptyStringToNull
             ],
             client // Pass the client to the query helper
         );
         const employeeId = employeeInsertRes.rows[0].id;
 
         // If a role_id is provided, insert into employee_roles
-        if (role_id) {
+        if (role_id && role_id.trim() !== '') {
             await query(
                 'INSERT INTO employee_roles (employee_id, role_id) VALUES ($1, $2)',
                 [employeeId, role_id],
@@ -150,7 +151,7 @@ export const create = async (employeeData) => {
         }
 
         // If salary info is provided, insert into employee_salaries
-        if (salary_amount && effective_date) {
+        if (salary_amount && effective_date && salary_amount.trim() !== '' && effective_date.trim() !== '') {
             await query(
                 'INSERT INTO employee_salaries (employee_id, salary_amount, effective_date) VALUES ($1, $2, $3)',
                 [employeeId, salary_amount, effective_date],
@@ -199,26 +200,26 @@ export const update = async (id, employeeData) => {
             employee_code = $1, first_name = $2, middle_name = $3, last_name = $4, second_last_name = $5,
             email = $6, phone = $7, birth_date = $8, hire_date = $9, identification_type_id = $10,
             identification_number = $11, manager_id = $12, headquarters_id = $13, gender_id = $14, 
-            status_id = $15, access_level_id = $16
+            status_id = $15, access_level_id = $16, updated_at = CURRENT_TIMESTAMP
         WHERE id = $17
         RETURNING id`,
         [
             employee_code,
             first_name,
-            middle_name,
+            emptyStringToNull(middle_name),
             last_name,
-            second_last_name,
+            emptyStringToNull(second_last_name),
             email,
-            phone,
-            birth_date,
-            hire_date,
-            identification_type_id,
-            identification_number,
-            manager_id,
-            headquarters_id,
-            gender_id,
-            status_id,
-            access_level_id,
+            phone, // Now required - no need for emptyStringToNull
+            birth_date, // Now required - no need for emptyStringToNull
+            hire_date, // Required field
+            identification_type_id, // Now required - no need for emptyStringToNull
+            identification_number, // Now required - no need for emptyStringToNull
+            emptyStringToNull(manager_id),
+            headquarters_id, // Required field  
+            gender_id, // Now required - no need for emptyStringToNull
+            status_id, // Required field
+            access_level_id, // Now required - no need for emptyStringToNull
             id,
         ]
     );
