@@ -14,9 +14,13 @@ export const findAll = async () => {
             r.updated_at,
             e.first_name,
             e.last_name,
-            rs.name
+            h.name AS department_name,
+            CONCAT(m.first_name, ' ', m.last_name) AS manager_name,
+            rs.name AS status_name
         FROM requests r
         JOIN employees e ON r.employee_id = e.id
+        LEFT JOIN headquarters h ON e.headquarters_id = h.id
+        LEFT JOIN employees m ON e.manager_id = m.id
         JOIN request_statuses rs ON r.status_id = rs.id
         ORDER BY r.created_at DESC
     `);
@@ -36,9 +40,13 @@ export const findById = async (id) => {
             e.first_name,
             e.last_name,
             e.email,
-            rs.name
+            h.name AS department_name,
+            CONCAT(m.first_name, ' ', m.last_name) AS manager_name,
+            rs.name AS status_name
         FROM requests r
         JOIN employees e ON r.employee_id = e.id
+        LEFT JOIN headquarters h ON e.headquarters_id = h.id
+        LEFT JOIN employees m ON e.manager_id = m.id
         JOIN request_statuses rs ON r.status_id = rs.id
         WHERE r.id = $1
     `, [id]);
@@ -209,7 +217,11 @@ export const findByEmployeeId = async (employeeId) => {
             r.request_type,
             r.status_id,
             r.created_at,
-            rs.name,
+            e.first_name,
+            e.last_name,
+            h.name AS department_name,
+            CONCAT(m.first_name, ' ', m.last_name) AS manager_name,
+            rs.name AS status_name,
             -- Vacation request details
             vr.start_date as vacation_start_date,
             vr.end_date as vacation_end_date,
@@ -220,6 +232,9 @@ export const findByEmployeeId = async (employeeId) => {
             -- Certificate requests don't have date ranges
             cr.id as certificate_id
         FROM requests r
+        JOIN employees e ON r.employee_id = e.id
+        LEFT JOIN headquarters h ON e.headquarters_id = h.id
+        LEFT JOIN employees m ON e.manager_id = m.id
         JOIN request_statuses rs ON r.status_id = rs.id
         LEFT JOIN vacation_requests vr ON r.id = vr.id AND r.request_type = 'vacation'
         LEFT JOIN leave_requests lr ON r.id = lr.id AND r.request_type = 'leave'
