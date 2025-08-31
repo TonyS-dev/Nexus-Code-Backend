@@ -4,7 +4,7 @@
  */
 
 import express from 'express';
-import { PasswordResetController } from '../controllers/passwordReset.controller.js';
+import { PasswordResetController } from '../controllers/password_reset.controller.js';
 import { rateLimiter } from '../middleware/rateLimiter.js';
 
 const router = express.Router();

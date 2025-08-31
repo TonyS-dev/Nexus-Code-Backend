@@ -3,7 +3,7 @@
  * @description Controller for password reset functionality
  */
 
-import { PasswordResetService } from '../services/passwordReset.service.js';
+import { PasswordResetService } from '../services/password_reset.service.js';
 import { logger } from '../utils/logger.js';
 
 // Simple validation functions
