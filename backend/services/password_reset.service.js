@@ -3,7 +3,7 @@
  * @description Service for handling password reset functionality (PostgreSQL)
  */
 
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { pool } from '../config/database.js';
 import { logger } from '../utils/logger.js';
