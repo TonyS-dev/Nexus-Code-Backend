@@ -30,7 +30,7 @@ import attachedDocumentsRoutes from '../routes/attached_documents.route.js';
 import notificationsRoutes from '../routes/notifications.route.js';
 import vacationBalancesRoutes from '../routes/vacation_balances.route.js';
 import requestStatusesRoutes from '../routes/request_statuses.route.js';
-
+import passwordResetRoutes from './passwordReset.routes.js';
 
 // Custom Middleware
 import { globalErrorHandler } from '../middleware/globalErrorHandler.js';
@@ -70,6 +70,7 @@ app.use('/notifications', notificationsRoutes);
 app.use('/vacation-balances', vacationBalancesRoutes);
 app.use('/request-statuses', requestStatusesRoutes);
 
+app.use('/auth', passwordResetRoutes); // Password reset routes
 // --- Error Handling ---
 app.use(globalErrorHandler);
 
