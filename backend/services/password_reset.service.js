@@ -16,9 +16,9 @@ export class PasswordResetService {
      */
     static async generateResetToken(email) {
         try {
-            // Check if user exists
+            // Check if user exists - remove status_id filter since it's UUID
             const userResult = await pool.query(
-                'SELECT id, email, first_name FROM employees WHERE email = $1 AND status_id = 1',
+                'SELECT id, email, first_name FROM employees WHERE email = $1',
                 [email]
             );
 
