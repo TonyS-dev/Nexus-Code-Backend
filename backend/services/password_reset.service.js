@@ -5,7 +5,7 @@
 
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { pool } from '../config/database.js';
+import { pool } from '../models/db_connection.js';
 import { logger } from '../utils/logger.js';
 
 export class PasswordResetService {
