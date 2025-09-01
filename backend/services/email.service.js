@@ -83,6 +83,19 @@ export class EmailService {
                 `
             });
 
+            console.log('🔍 Resend response:', result);
+
+            // Handle both success and error cases
+            if (result.error) {
+                console.error('❌ Resend API error:', result.error);
+                throw new Error(`Resend API error: ${result.error.message}`);
+            }
+
+            if (!result.data || !result.data.id) {
+                console.error('❌ Invalid Resend response:', result);
+                throw new Error('Invalid response from Resend API');
+            }
+
             console.log('✅ Password reset email sent successfully:', result.data.id);
             return { success: true, messageId: result.data.id };
 
@@ -113,6 +126,16 @@ export class EmailService {
                 subject: 'Resend Test Email',
                 html: '<p>✅ Resend is working correctly!</p>'
             });
+
+            console.log('🔍 Test response:', result);
+
+            if (result.error) {
+                return { success: false, error: result.error.message };
+            }
+
+            if (!result.data) {
+                return { success: false, error: 'Invalid Resend response' };
+            }
 
             console.log('✅ Resend connection test successful:', result.data.id);
             return { success: true, messageId: result.data.id };
