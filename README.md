@@ -14,6 +14,16 @@ The system features a **Node.js Express architecture** with **PostgreSQL databas
 
 ---
 
+## 🖥️ Live Demo
+
+Live URL here:
+
+```
+https://api.riwi-nexus.app
+```
+
+---
+
 ## 🎯 Core Features
 
 - ✅ **RESTful API Architecture:** Complete Express.js REST API with standardized endpoints and HTTP status codes
@@ -318,4 +328,5 @@ python stop-prod.py
 ## 📋 Team
 
 **Team:** Nexus-code  
+
 **Repository:** Backend API Service
