@@ -131,7 +131,7 @@ export class PasswordResetService {
 
             // Update user password
             await pool.query(
-                'UPDATE employees SET password = $1, updated_at = NOW() WHERE id = $2',
+                'UPDATE employees SET password_hash = $1, updated_at = NOW() WHERE id = $2',
                 [hashedPassword, userId]
             );
 
