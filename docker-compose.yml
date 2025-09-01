@@ -21,28 +21,25 @@ services:
       retries: 5
 
   backend:
+    build: ./backend
     container_name: nexus_api_service
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    networks:
+      - nexus_network
     environment:
-      - DB_HOST=db
+      - NODE_ENV=production
+      - BACKEND_PORT=3001
+      - DB_HOST=nexus_db_service
       - DB_PORT=5432
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
-      - PORT=${BACKEND_PORT}
       - JWT_SECRET=${JWT_SECRET}
-      # Set NODE_ENV so the app knows it's in production
-      - NODE_ENV=production 
-    ports:
-      - "${BACKEND_PORT}:${BACKEND_PORT}"
-    networks:
-      - nexus_network
-    depends_on:
-      db:
-        condition: service_healthy
-    restart: unless-stopped
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - EMAIL_FROM=${EMAIL_FROM}
+      - FRONTEND_URL=${FRONTEND_URL}
 
 networks:
   nexus_network:

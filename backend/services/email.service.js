@@ -6,13 +6,14 @@
 import { Resend } from 'resend';
 
 export class EmailService {
-    static resend = new Resend(process.env.RESEND_API_KEY);
+    static resend = null;
 
-    static initialize() {
+    static getResend() {
         if (!this.resend && process.env.RESEND_API_KEY) {
             this.resend = new Resend(process.env.RESEND_API_KEY);
             console.log('✅ Resend email service initialized');
         }
+        return this.resend;
     }
 
     /**
@@ -23,13 +24,17 @@ export class EmailService {
      */
     static async sendPasswordReset(email, token, userName) {
         try {
-            this.initialize();
+            const resendClient = this.getResend();
+            
+            if (!resendClient) {
+                throw new Error('Resend API key not configured');
+            }
             
             const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
             
             console.log('📧 Sending password reset email to:', email);
 
-            const result = await this.resend.emails.send({
+            const result = await resendClient.emails.send({
                 from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
                 to: email,
                 subject: '🔑 Reset Your Password - Riwi Nexus',
@@ -92,13 +97,17 @@ export class EmailService {
      */
     static async testConnection() {
         try {
-            this.initialize();
+            const resendClient = this.getResend();
             
             console.log('🧪 Testing Resend connection...');
             console.log('API Key configured:', !!process.env.RESEND_API_KEY);
             console.log('Email from:', process.env.EMAIL_FROM);
 
-            const result = await this.resend.emails.send({
+            if (!resendClient) {
+                return { success: false, error: 'Resend API key not configured' };
+            }
+
+            const result = await resendClient.emails.send({
                 from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
                 to: 'test@example.com',
                 subject: 'Resend Test Email',
