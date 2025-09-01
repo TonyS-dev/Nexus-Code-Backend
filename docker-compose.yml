@@ -28,7 +28,7 @@ services:
       - DB_HOST=db
       - NODE_ENV=production
       - PORT=${BACKEND_PORT}
-      - DB_PORT=${DB_PORT}
+      - DB_PORT=5432
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
