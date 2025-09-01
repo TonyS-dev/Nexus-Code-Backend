@@ -24,11 +24,12 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    network_mode: "host"
     environment:
-      - DB_HOST=db
+      - DB_HOST=localhost
       - NODE_ENV=production
       - PORT=${BACKEND_PORT}
-      - DB_PORT=5432
+      - DB_PORT=${DB_PORT}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
@@ -36,10 +37,6 @@ services:
       - RESEND_API_KEY=${RESEND_API_KEY}
       - EMAIL_FROM=${EMAIL_FROM}
       - FRONTEND_URL=${FRONTEND_URL}
-    ports:
-      - "${BACKEND_PORT}:${BACKEND_PORT}"
-    networks:
-      - nexus_network
     depends_on:
       db:
         condition: service_healthy
