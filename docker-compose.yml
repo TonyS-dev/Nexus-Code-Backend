@@ -11,7 +11,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./database:/docker-entrypoint-initdb.d
     ports:
-      - "${DB_PORT}:5432"
+      - "127.0.0.1:${DB_PORT}:5432"
     networks:
       - nexus_network
     healthcheck:
@@ -21,28 +21,27 @@ services:
       retries: 5
 
   backend:
-    container_name: nexus_api_service
     build:
       context: ./backend
       dockerfile: Dockerfile
+    network_mode: "host"
     environment:
-      - DB_HOST=db
-      - DB_PORT=5432
+      - DB_HOST=localhost
+      - NODE_ENV=production
+      - PORT=${BACKEND_PORT}
+      - DB_PORT=${DB_PORT}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
-      - PORT=${BACKEND_PORT}
       - JWT_SECRET=${JWT_SECRET}
-      # Set NODE_ENV so the app knows it's in production
-      - NODE_ENV=production 
-    ports:
-      - "${BACKEND_PORT}:${BACKEND_PORT}"
-    networks:
-      - nexus_network
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - EMAIL_FROM=${EMAIL_FROM}
+      - FRONTEND_URL=${FRONTEND_URL}
     depends_on:
       db:
         condition: service_healthy
     restart: unless-stopped
+
 
 networks:
   nexus_network:

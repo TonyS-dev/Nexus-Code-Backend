@@ -3,7 +3,8 @@
  * @description Controller for password reset functionality
  */
 
-import { PasswordResetService } from '../services/passwordReset.service.js';
+import { PasswordResetService } from '../services/password_reset.service.js';
+import { EmailService } from '../services/email.service.js';
 import { logger } from '../utils/logger.js';
 
 // Simple validation functions
@@ -45,13 +46,25 @@ export class PasswordResetController {
                 email.toLowerCase()
             );
 
-            // In production, you would send the token via email instead of returning it
+            // Send email if user exists
+            if (result.success && result.user) {
+                try {
+                    await EmailService.sendPasswordReset(
+                        result.user.email,
+                        result.token,
+                        result.user.first_name
+                    );
+                    console.log('✅ Password reset email sent to:', result.user.email);
+                } catch (emailError) {
+                    console.error('❌ Failed to send email:', emailError.message);
+                    // Don't fail the request if email fails
+                }
+            }
+
+            // Always return success message for security
             res.json({
                 success: true,
-                message: result.message,
-                // Remove this in production - send via email instead
-                reset_token: result.token,
-                user: result.user,
+                message: 'If the email exists, a password reset link has been sent.',
             });
         } catch (error) {
             logger.error('Error in requestPasswordReset:', error);

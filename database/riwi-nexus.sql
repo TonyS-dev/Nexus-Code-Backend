@@ -12,7 +12,7 @@
  Target Server Version : 150013 (150013)
  File Encoding         : 65001
 
- Date: 28/08/2025 20:13:08
+ Date: 31/08/2025 21:55:26
 */
 
 
@@ -55,9 +55,6 @@ ALTER TABLE "public"."approvals" OWNER TO "riwi_nexus_user";
 -- Records of approvals
 -- ----------------------------
 BEGIN;
-INSERT INTO "public"."approvals" ("id", "request_id", "approver_id", "status_id", "comments", "approval_date") VALUES ('99d9a48d-3887-432a-b1f6-ead3610508d3', 'c3d4e5f6-a7b8-4012-cdef-345678901234', '52784b0d-6933-4717-acd7-46f940ab8579', 'c0ff36f5-68cb-49fc-87cc-6a21a6f07d90', 'Approved - medical appointment justified', '2025-08-16 11:20:00');
-INSERT INTO "public"."approvals" ("id", "request_id", "approver_id", "status_id", "comments", "approval_date") VALUES ('4544fab1-26a3-47f5-a0e3-e1b6a2dcf39e', 'd4e5f6a7-b8c9-4123-def0-456789012345', '52784b0d-6933-4717-acd7-46f940ab8579', 'c0ff36f5-68cb-49fc-87cc-6a21a6f07d90', 'Approved - vacation request processed successfully', '2025-07-12 10:00:00');
-INSERT INTO "public"."approvals" ("id", "request_id", "approver_id", "status_id", "comments", "approval_date") VALUES ('0f5d886c-8cf8-4ac2-b6be-c53cc1c1ca5d', 'b2c3d4e5-f6a7-4901-bcde-f23456789012', '52784b0d-6933-4717-acd7-46f940ab8579', '17197433-8315-448f-8109-06445ea5029a', 'Under review - checking employee information', '2025-08-26 09:30:00');
 COMMIT;
 
 -- ----------------------------
@@ -82,8 +79,6 @@ ALTER TABLE "public"."attached_documents" OWNER TO "riwi_nexus_user";
 -- Records of attached_documents
 -- ----------------------------
 BEGIN;
-INSERT INTO "public"."attached_documents" ("id", "request_id", "file_name", "file_url", "file_type", "file_size_bytes", "uploaded_by_id", "created_at", "updated_at") VALUES ('59dc9309-32b3-4420-bddf-d78376001574', 'c3d4e5f6-a7b8-4012-cdef-345678901234', 'medical_appointment_confirmation.pdf', '/uploads/documents/medical_appointment_confirmation.pdf', 'application/pdf', 245760, 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', '2025-08-29 00:40:44.23644', NULL);
-INSERT INTO "public"."attached_documents" ("id", "request_id", "file_name", "file_url", "file_type", "file_size_bytes", "uploaded_by_id", "created_at", "updated_at") VALUES ('70f26f39-ee72-49d1-8a20-a556eca3c046', 'b2c3d4e5-f6a7-4901-bcde-f23456789012', 'bank_loan_requirements.pdf', '/uploads/documents/bank_loan_requirements.pdf', 'application/pdf', 156890, '99cbbd5d-c6b2-4a6d-ac0d-35d721f4ef6c', '2025-08-29 00:40:44.23644', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -102,7 +97,12 @@ ALTER TABLE "public"."certificate_requests" OWNER TO "riwi_nexus_user";
 -- Records of certificate_requests
 -- ----------------------------
 BEGIN;
-INSERT INTO "public"."certificate_requests" ("id", "certificate_type_id", "comments") VALUES ('b2c3d4e5-f6a7-4901-bcde-f23456789012', '6f78c592-804c-4156-af48-d2b57a3c421e', 'Need employment certificate for bank loan application');
+INSERT INTO "public"."certificate_requests" ("id", "certificate_type_id", "comments") VALUES ('665ffab0-8484-40ad-acdc-4bccb548b2a6', '8cfd8871-b9a3-4260-98a9-49fe738796ec', NULL);
+INSERT INTO "public"."certificate_requests" ("id", "certificate_type_id", "comments") VALUES ('842d6f8e-6da5-4394-bd44-25b273c677d6', '1b072157-1102-4a12-8251-921959032528', 'asdas');
+INSERT INTO "public"."certificate_requests" ("id", "certificate_type_id", "comments") VALUES ('f4d7d985-3c5e-42fc-ae63-052c6d6570a6', '23272257-374a-4ee9-99b8-4f5ba8784bbb', NULL);
+INSERT INTO "public"."certificate_requests" ("id", "certificate_type_id", "comments") VALUES ('eda8a0e2-dd63-436f-8fe0-694f8e901e82', '1b072157-1102-4a12-8251-921959032528', 'lo necito');
+INSERT INTO "public"."certificate_requests" ("id", "certificate_type_id", "comments") VALUES ('1f4669c4-43d9-4c42-94ff-8ca19f4b635f', '44e9d98b-3d23-4bf8-a001-10362be5f9a2', NULL);
+INSERT INTO "public"."certificate_requests" ("id", "certificate_type_id", "comments") VALUES ('5f7a0f67-83cd-40a0-9f50-b83e8c0aed2f', '44e9d98b-3d23-4bf8-a001-10362be5f9a2', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -190,6 +190,10 @@ INSERT INTO "public"."employee_roles" ("employee_id", "role_id") VALUES ('52784b
 INSERT INTO "public"."employee_roles" ("employee_id", "role_id") VALUES ('4a09ee7b-e188-4cfa-a50a-90c87d979566', '85c57857-5007-4144-a601-53278a4f96b6');
 INSERT INTO "public"."employee_roles" ("employee_id", "role_id") VALUES ('e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', '01896d9a-1bfe-4607-ae03-7b10eb24dfee');
 INSERT INTO "public"."employee_roles" ("employee_id", "role_id") VALUES ('99cbbd5d-c6b2-4a6d-ac0d-35d721f4ef6c', '01896d9a-1bfe-4607-ae03-7b10eb24dfee');
+INSERT INTO "public"."employee_roles" ("employee_id", "role_id") VALUES ('38962d4d-0315-4595-b047-953b72f5b39a', '01896d9a-1bfe-4607-ae03-7b10eb24dfee');
+INSERT INTO "public"."employee_roles" ("employee_id", "role_id") VALUES ('0e4a5795-c4cb-474f-b06f-b8bc71bf52ba', '65fb5f91-a47d-4dd7-8f95-77c7831b56d0');
+INSERT INTO "public"."employee_roles" ("employee_id", "role_id") VALUES ('fdb3c34c-676b-49d5-a5a6-bbcc4b62f9f8', '01896d9a-1bfe-4607-ae03-7b10eb24dfee');
+INSERT INTO "public"."employee_roles" ("employee_id", "role_id") VALUES ('067422dc-9e4a-4e0a-a2db-8d251634c7ce', '01896d9a-1bfe-4607-ae03-7b10eb24dfee');
 COMMIT;
 
 -- ----------------------------
@@ -229,6 +233,7 @@ INSERT INTO "public"."employee_salaries" ("id", "employee_id", "salary_amount", 
 INSERT INTO "public"."employee_salaries" ("id", "employee_id", "salary_amount", "effective_date", "created_at", "updated_at") VALUES ('bf7aa485-dfd3-4020-a239-97f1b4931f05', '4a09ee7b-e188-4cfa-a50a-90c87d979566', 8500000.00, '2024-01-01', '2025-08-29 00:53:04.267324', NULL);
 INSERT INTO "public"."employee_salaries" ("id", "employee_id", "salary_amount", "effective_date", "created_at", "updated_at") VALUES ('231b0033-39ad-48c6-96ee-8b557021bc15', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 5000000.00, '2024-08-01', '2025-08-29 00:53:04.267324', NULL);
 INSERT INTO "public"."employee_salaries" ("id", "employee_id", "salary_amount", "effective_date", "created_at", "updated_at") VALUES ('e8ff480c-e730-495d-9301-7a2a6f342679', '99cbbd5d-c6b2-4a6d-ac0d-35d721f4ef6c', 4800000.00, '2024-01-01', '2025-08-29 00:53:04.267324', NULL);
+INSERT INTO "public"."employee_salaries" ("id", "employee_id", "salary_amount", "effective_date", "created_at", "updated_at") VALUES ('3d65bb82-4f05-489d-be80-dc7938d1fe30', '0e4a5795-c4cb-474f-b06f-b8bc71bf52ba', 100000000.00, '2025-08-30', '2025-08-29 21:02:29.667612', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -267,16 +272,16 @@ CREATE TABLE "public"."employees" (
   "second_last_name" varchar(40) COLLATE "pg_catalog"."default",
   "email" varchar(60) COLLATE "pg_catalog"."default" NOT NULL,
   "password_hash" varchar(80) COLLATE "pg_catalog"."default" NOT NULL,
-  "phone" varchar(20) COLLATE "pg_catalog"."default",
-  "birth_date" date,
+  "phone" varchar(20) COLLATE "pg_catalog"."default" NOT NULL,
+  "birth_date" date NOT NULL,
   "hire_date" date NOT NULL,
-  "identification_type_id" uuid,
-  "identification_number" varchar(50) COLLATE "pg_catalog"."default",
+  "identification_type_id" uuid NOT NULL,
+  "identification_number" varchar(50) COLLATE "pg_catalog"."default" NOT NULL,
   "manager_id" uuid,
   "headquarters_id" uuid NOT NULL,
-  "gender_id" uuid,
+  "gender_id" uuid NOT NULL,
   "status_id" uuid NOT NULL,
-  "access_level_id" uuid,
+  "access_level_id" uuid NOT NULL,
   "created_at" timestamp(6),
   "updated_at" timestamp(6),
   "is_deleted" bool DEFAULT false
@@ -289,9 +294,13 @@ ALTER TABLE "public"."employees" OWNER TO "riwi_nexus_user";
 -- ----------------------------
 BEGIN;
 INSERT INTO "public"."employees" ("id", "employee_code", "first_name", "middle_name", "last_name", "second_last_name", "email", "password_hash", "phone", "birth_date", "hire_date", "identification_type_id", "identification_number", "manager_id", "headquarters_id", "gender_id", "status_id", "access_level_id", "created_at", "updated_at", "is_deleted") VALUES ('e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'EMP-001', 'Ana', 'María', 'Lopez', 'Castro', 'ana@nexus.com', '$2b$10$T6a0Xu.EUTQww3S1aUT0Oute94zoD7ihhLVpM.y3u/zn/kHo1.Sme', '1112223334444', '1990-11-25', '2024-02-01', '6d65e299-1497-4aa8-9951-8fec24e1fc18', '1122233444', '52784b0d-6933-4717-acd7-46f940ab8579', 'a5208edf-dff8-4f77-8236-8c413ef6a638', '3b0cfae3-bf10-4e87-93e3-7fe5b213c5a8', 'f0f0c09c-6f18-44fd-a1c2-cd5116658a81', '7cfa2e89-2590-4b44-a379-365e69b6ee9a', '2025-08-28 16:18:33.949394', '2025-08-28 16:44:05.724367', 'f');
-INSERT INTO "public"."employees" ("id", "employee_code", "first_name", "middle_name", "last_name", "second_last_name", "email", "password_hash", "phone", "birth_date", "hire_date", "identification_type_id", "identification_number", "manager_id", "headquarters_id", "gender_id", "status_id", "access_level_id", "created_at", "updated_at", "is_deleted") VALUES ('52784b0d-6933-4717-acd7-46f940ab8579', 'CEO-001', 'Admin', NULL, 'User', NULL, 'ceo@nexus.com', '$2b$10$fd4mZEr1ey0yHc27Cj8tSuzmH1U1ViieCeE.XWa1GKMd8BM5lgD.e', '+57 300 123 4567', '1975-05-15', '2022-01-10', '6d65e299-1497-4aa8-9951-8fec24e1fc18', '12345678', NULL, '0c682a62-95a4-4b8c-be1e-fbec4e9b5eba', 'a479f98b-7972-4f82-972e-5849d422e3c0', 'f0f0c09c-6f18-44fd-a1c2-cd5116658a81', '29963268-444d-456d-9f6c-fd4f4f476b85', '2025-08-28 16:10:59.174368', '2025-08-29 00:53:03.981331', 'f');
+INSERT INTO "public"."employees" ("id", "employee_code", "first_name", "middle_name", "last_name", "second_last_name", "email", "password_hash", "phone", "birth_date", "hire_date", "identification_type_id", "identification_number", "manager_id", "headquarters_id", "gender_id", "status_id", "access_level_id", "created_at", "updated_at", "is_deleted") VALUES ('0e4a5795-c4cb-474f-b06f-b8bc71bf52ba', 'RIWI1123', 'Javier', NULL, 'Ariza', NULL, 'javier@nexus.com', '$2b$10$Wpn5XZ57QrZUhKGwH3Kq0.rdnNIfLiM2UvXfqxoHdLLYvJK1eT0Ki', '+57 3012669349', '2000-08-12', '2025-08-29', 'bcef37b7-05c4-4392-88b5-522487400f7d', '1233456863', NULL, 'a5208edf-dff8-4f77-8236-8c413ef6a638', 'a479f98b-7972-4f82-972e-5849d422e3c0', 'cc46522b-0731-46c1-9fd8-bf06dc0f8bd0', '29963268-444d-456d-9f6c-fd4f4f476b85', '2025-08-29 21:02:29.667612', '2025-08-31 19:10:19.194192', 'f');
+INSERT INTO "public"."employees" ("id", "employee_code", "first_name", "middle_name", "last_name", "second_last_name", "email", "password_hash", "phone", "birth_date", "hire_date", "identification_type_id", "identification_number", "manager_id", "headquarters_id", "gender_id", "status_id", "access_level_id", "created_at", "updated_at", "is_deleted") VALUES ('067422dc-9e4a-4e0a-a2db-8d251634c7ce', 'ANTO-001', 'Antonio', 'Carlos', 'Santiago', 'Rodriguez', 'santiagor.acarlos@gmail.com', '$2b$10$891rCbepb0LX6en.yVpa5e0WjhKw4DfocAQuWr4JcBdT7ueljxVmi', '+57 311 861 2730', '2000-11-30', '2025-08-31', '6d65e299-1497-4aa8-9951-8fec24e1fc18', '1192796292', NULL, 'a5208edf-dff8-4f77-8236-8c413ef6a638', 'a479f98b-7972-4f82-972e-5849d422e3c0', 'f0f0c09c-6f18-44fd-a1c2-cd5116658a81', '29963268-444d-456d-9f6c-fd4f4f476b85', '2025-08-31 23:29:43.904', '2025-09-01 01:49:08.143989', 'f');
 INSERT INTO "public"."employees" ("id", "employee_code", "first_name", "middle_name", "last_name", "second_last_name", "email", "password_hash", "phone", "birth_date", "hire_date", "identification_type_id", "identification_number", "manager_id", "headquarters_id", "gender_id", "status_id", "access_level_id", "created_at", "updated_at", "is_deleted") VALUES ('4a09ee7b-e188-4cfa-a50a-90c87d979566', 'MAN-001', 'Moises', NULL, 'Pereira', NULL, 'moises@nexus.com', '$2b$10$5HiUZhOyntv2W7aU7dg.WOlNq0nwC9931PtjEcTP1O3ohGi8VrqCG', '+57 301 234 5678', '1985-03-20', '2022-06-15', '6d65e299-1497-4aa8-9951-8fec24e1fc18', '23456789', '52784b0d-6933-4717-acd7-46f940ab8579', 'a5208edf-dff8-4f77-8236-8c413ef6a638', 'a479f98b-7972-4f82-972e-5849d422e3c0', 'f0f0c09c-6f18-44fd-a1c2-cd5116658a81', '7cfa2e89-2590-4b44-a379-365e69b6ee9a', '2025-08-28 16:16:39.37736', '2025-08-29 00:53:04.067944', 'f');
 INSERT INTO "public"."employees" ("id", "employee_code", "first_name", "middle_name", "last_name", "second_last_name", "email", "password_hash", "phone", "birth_date", "hire_date", "identification_type_id", "identification_number", "manager_id", "headquarters_id", "gender_id", "status_id", "access_level_id", "created_at", "updated_at", "is_deleted") VALUES ('99cbbd5d-c6b2-4a6d-ac0d-35d721f4ef6c', 'EMP-002', 'Carlos', NULL, 'Ruiz', NULL, 'carlos@nexus.com', '$2b$10$DLbmh27lJ2w168V8TMqR5uhLURUMrRTJxHLK6r3iJ3qaftZijdKXq', '+57 302 345 6789', '1992-08-10', '2023-03-01', '6d65e299-1497-4aa8-9951-8fec24e1fc18', '34567890', '52784b0d-6933-4717-acd7-46f940ab8579', 'a5208edf-dff8-4f77-8236-8c413ef6a638', 'a479f98b-7972-4f82-972e-5849d422e3c0', 'f0f0c09c-6f18-44fd-a1c2-cd5116658a81', '7cfa2e89-2590-4b44-a379-365e69b6ee9a', '2025-08-28 17:00:38.125549', '2025-08-29 00:53:04.152051', 'f');
+INSERT INTO "public"."employees" ("id", "employee_code", "first_name", "middle_name", "last_name", "second_last_name", "email", "password_hash", "phone", "birth_date", "hire_date", "identification_type_id", "identification_number", "manager_id", "headquarters_id", "gender_id", "status_id", "access_level_id", "created_at", "updated_at", "is_deleted") VALUES ('38962d4d-0315-4595-b047-953b72f5b39a', 'RIWI-NEXUS-001', 'Juan', 'Ernadez', 'Perez', 'Pacheco', 'juan@nexus.com', '$2b$10$wJuECIAiXOSnb0GyWEarVucTduLGfIsiO7FxDvHMofFB8XyMzjzU2', '+57 3018559386', '2000-08-12', '2025-08-29', 'bcef37b7-05c4-4392-88b5-522487400f7d', '12223553425', '52784b0d-6933-4717-acd7-46f940ab8579', 'a5208edf-dff8-4f77-8236-8c413ef6a638', 'a479f98b-7972-4f82-972e-5849d422e3c0', 'f0f0c09c-6f18-44fd-a1c2-cd5116658a81', '7cfa2e89-2590-4b44-a379-365e69b6ee9a', '2025-08-29 20:36:50.01251', NULL, 'f');
+INSERT INTO "public"."employees" ("id", "employee_code", "first_name", "middle_name", "last_name", "second_last_name", "email", "password_hash", "phone", "birth_date", "hire_date", "identification_type_id", "identification_number", "manager_id", "headquarters_id", "gender_id", "status_id", "access_level_id", "created_at", "updated_at", "is_deleted") VALUES ('fdb3c34c-676b-49d5-a5a6-bbcc4b62f9f8', 'as', 'as First Name1', 'as Middle Name1', 'as Last Name1', 'as Second Last Name1', 'as@mail.com1', '$2b$10$zHNUYsBm6zzFqnCBMWNKDe.9Sm955OD6YGSbzM.eWm5ZgHxgAq892', '3123123121', '2025-08-10', '2025-10-02', 'bcef37b7-05c4-4392-88b5-522487400f7d', '213123121', '0e4a5795-c4cb-474f-b06f-b8bc71bf52ba', '0c682a62-95a4-4b8c-be1e-fbec4e9b5eba', 'b0bb8fc7-03ad-4fb1-bbd3-62930d8e9949', '485ebce3-6006-4634-b60e-f4b1981517f2', '7cfa2e89-2590-4b44-a379-365e69b6ee9a', '2025-08-31 00:53:49.52751', '2025-08-31 14:33:32.583572', 't');
+INSERT INTO "public"."employees" ("id", "employee_code", "first_name", "middle_name", "last_name", "second_last_name", "email", "password_hash", "phone", "birth_date", "hire_date", "identification_type_id", "identification_number", "manager_id", "headquarters_id", "gender_id", "status_id", "access_level_id", "created_at", "updated_at", "is_deleted") VALUES ('52784b0d-6933-4717-acd7-46f940ab8579', 'CEO-001', 'Ceo', NULL, 'User', NULL, 'ceo@nexus.com', '$2b$10$fd4mZEr1ey0yHc27Cj8tSuzmH1U1ViieCeE.XWa1GKMd8BM5lgD.e', '+57 300 123 4567', '1975-05-15', '2022-01-10', '6d65e299-1497-4aa8-9951-8fec24e1fc18', '12345678', NULL, '0c682a62-95a4-4b8c-be1e-fbec4e9b5eba', 'a479f98b-7972-4f82-972e-5849d422e3c0', 'f0f0c09c-6f18-44fd-a1c2-cd5116658a81', '29963268-444d-456d-9f6c-fd4f4f476b85', '2025-08-28 16:10:59.174368', '2025-08-31 19:08:57.348757', 'f');
 COMMIT;
 
 -- ----------------------------
@@ -381,7 +390,7 @@ ALTER TABLE "public"."leave_requests" OWNER TO "riwi_nexus_user";
 -- Records of leave_requests
 -- ----------------------------
 BEGIN;
-INSERT INTO "public"."leave_requests" ("id", "leave_type_id", "start_date", "end_date", "reason", "is_paid", "payment_amount") VALUES ('c3d4e5f6-a7b8-4012-cdef-345678901234', 'efb91474-a8fa-4b63-86fc-9cfdb9c2150f', '2025-08-16 09:00:00', '2025-08-16 12:00:00', 'Medical appointment with specialist', 't', 150000.00);
+INSERT INTO "public"."leave_requests" ("id", "leave_type_id", "start_date", "end_date", "reason", "is_paid", "payment_amount") VALUES ('150fd993-f4a2-4d0e-841d-fc924931ae94', '8782a144-8f9a-4c0b-b07a-94ec24795c70', '2025-08-29 08:00:00', '2025-09-30 08:00:00', 'asdas', 'f', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -436,12 +445,34 @@ ALTER TABLE "public"."notifications" OWNER TO "riwi_nexus_user";
 -- Records of notifications
 -- ----------------------------
 BEGIN;
-INSERT INTO "public"."notifications" ("id", "recipient_id", "message", "is_read", "related_url", "sent_date") VALUES ('1a299d3c-fc04-4aff-b2b8-a8e2a2f55fd2', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'Your vacation request has been submitted and is pending approval', 'f', '/requests/a1b2c3d4-e5f6-4890-abcd-ef1234567890', '2025-08-20 10:05:00');
 INSERT INTO "public"."notifications" ("id", "recipient_id", "message", "is_read", "related_url", "sent_date") VALUES ('b3aefd95-0525-48b5-a21f-fb048f04d09b', '99cbbd5d-c6b2-4a6d-ac0d-35d721f4ef6c', 'Your certificate request is under review', 'f', '/requests/b2c3d4e5-f6a7-4901-bcde-f23456789012', '2025-08-26 09:35:00');
 INSERT INTO "public"."notifications" ("id", "recipient_id", "message", "is_read", "related_url", "sent_date") VALUES ('2422d352-615b-4ad0-97a5-5b0aef6563fc', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'Your leave request has been approved', 't', '/requests/c3d4e5f6-a7b8-4012-cdef-345678901234', '2025-08-16 11:25:00');
 INSERT INTO "public"."notifications" ("id", "recipient_id", "message", "is_read", "related_url", "sent_date") VALUES ('e59ed59a-2268-472c-ad7f-26d8bfd83181', '4a09ee7b-e188-4cfa-a50a-90c87d979566', 'Your vacation request has been completed', 't', '/requests/d4e5f6a7-b8c9-4123-def0-456789012345', '2025-07-12 10:05:00');
 INSERT INTO "public"."notifications" ("id", "recipient_id", "message", "is_read", "related_url", "sent_date") VALUES ('7c37d741-6f03-4ba5-a0de-4c40e84125df', '52784b0d-6933-4717-acd7-46f940ab8579', 'New vacation request from Ana López requires approval', 'f', '/approvals/pending', '2025-08-20 10:00:00');
 INSERT INTO "public"."notifications" ("id", "recipient_id", "message", "is_read", "related_url", "sent_date") VALUES ('de549d8f-83b5-49fb-829b-a73ffd8ae788', '52784b0d-6933-4717-acd7-46f940ab8579', 'New certificate request from Carlos Ruiz requires review', 'f', '/approvals/pending', '2025-08-25 14:30:00');
+INSERT INTO "public"."notifications" ("id", "recipient_id", "message", "is_read", "related_url", "sent_date") VALUES ('1a299d3c-fc04-4aff-b2b8-a8e2a2f55fd2', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'Your vacation request has been submitted and is pending approval', 't', '/requests/a1b2c3d4-e5f6-4890-abcd-ef1234567890', '2025-08-20 10:05:00');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for password_reset_tokens
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."password_reset_tokens";
+CREATE TABLE "public"."password_reset_tokens" (
+  "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+  "user_id" uuid NOT NULL,
+  "email" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "token" text COLLATE "pg_catalog"."default" NOT NULL,
+  "expires_at" timestamp(6) NOT NULL,
+  "created_at" timestamp(6) DEFAULT CURRENT_TIMESTAMP
+)
+;
+ALTER TABLE "public"."password_reset_tokens" OWNER TO "riwi_nexus_user";
+
+-- ----------------------------
+-- Records of password_reset_tokens
+-- ----------------------------
+BEGIN;
+INSERT INTO "public"."password_reset_tokens" ("id", "user_id", "email", "token", "expires_at", "created_at") VALUES ('81c99516-36b8-4ab6-8e46-85e7199ccb14', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'ana@nexus.com', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlMzgzYTgzOS02MGEzLTQ2NjItOWUzZi0xZmYyYzZjMGE0ZDkiLCJlbWFpbCI6ImFuYUBuZXh1cy5jb20iLCJ0eXBlIjoicGFzc3dvcmRfcmVzZXQiLCJpYXQiOjE3NTY2ODkxMDgsImV4cCI6MTc1NjY5MjcwOH0.pN1kmMQOjX484rZFZja6OhH6HmRrke9VbCcc_5ayphE', '2025-09-01 02:11:48.215236', '2025-09-01 01:11:48.215236');
 COMMIT;
 
 -- ----------------------------
@@ -490,10 +521,23 @@ ALTER TABLE "public"."requests" OWNER TO "riwi_nexus_user";
 -- Records of requests
 -- ----------------------------
 BEGIN;
-INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('a1b2c3d4-e5f6-4890-abcd-ef1234567890', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'VACATION', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 00:40:43.709891', NULL);
-INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('b2c3d4e5-f6a7-4901-bcde-f23456789012', '99cbbd5d-c6b2-4a6d-ac0d-35d721f4ef6c', 'CERTIFICATE', '17197433-8315-448f-8109-06445ea5029a', '2025-08-29 00:40:43.709891', NULL);
-INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('c3d4e5f6-a7b8-4012-cdef-345678901234', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'LEAVE', 'c0ff36f5-68cb-49fc-87cc-6a21a6f07d90', '2025-08-29 00:40:43.709891', NULL);
-INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('d4e5f6a7-b8c9-4123-def0-456789012345', '4a09ee7b-e188-4cfa-a50a-90c87d979566', 'VACATION', 'f8d5cdb7-ef2f-4736-99b7-091892275009', '2025-08-29 00:40:43.709891', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('798e2c3f-532b-4d5d-933f-7cf8f64474bd', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 17:08:10.714242', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('e5bc7159-dc11-47a6-ab02-9a98918afa99', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 17:10:52.250876', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('2ff66a64-c513-44b6-abfb-a0dff863c89e', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 17:18:19.03292', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('4596c50f-cdfa-4d49-91ef-365c0e777d74', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 17:23:49.795717', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('b674d96f-6efc-4260-8d05-fdb57dfbf324', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 17:32:50.930382', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('665ffab0-8484-40ad-acdc-4bccb548b2a6', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'certificate', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 17:33:38.002723', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('65456014-8e21-43a9-a5bd-eebcff10d324', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 17:47:56.175254', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('721cbc34-74d1-4101-be46-94ba29ef5293', '4a09ee7b-e188-4cfa-a50a-90c87d979566', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 17:56:43.872415', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('842d6f8e-6da5-4394-bd44-25b273c677d6', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'certificate', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 21:26:43.858555', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('2eefbc6c-88da-427a-8d2d-ce7cb6ef728c', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 21:27:04.953475', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('6e769cd0-725b-4808-95de-b382f81abcb0', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 22:07:12.941021', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('150fd993-f4a2-4d0e-841d-fc924931ae94', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'leave', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-29 22:26:02.721316', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('f4d7d985-3c5e-42fc-ae63-052c6d6570a6', 'e383a839-60a3-4662-9e3f-1ff2c6c0a4d9', 'certificate', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-30 00:34:54.742224', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('eda8a0e2-dd63-436f-8fe0-694f8e901e82', '0e4a5795-c4cb-474f-b06f-b8bc71bf52ba', 'certificate', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-30 20:30:10.87588', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('1f4669c4-43d9-4c42-94ff-8ca19f4b635f', '52784b0d-6933-4717-acd7-46f940ab8579', 'certificate', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-30 20:37:20.050693', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('5f7a0f67-83cd-40a0-9f50-b83e8c0aed2f', '4a09ee7b-e188-4cfa-a50a-90c87d979566', 'certificate', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-30 20:44:38.410927', NULL);
+INSERT INTO "public"."requests" ("id", "employee_id", "request_type", "status_id", "created_at", "updated_at") VALUES ('9d88903c-a6a0-4583-ba81-f22f933017b3', '52784b0d-6933-4717-acd7-46f940ab8579', 'vacation', '394938e8-032f-4c7d-9ed5-04d1f15c8824', '2025-08-31 19:36:16.323921', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -581,8 +625,16 @@ ALTER TABLE "public"."vacation_requests" OWNER TO "riwi_nexus_user";
 -- Records of vacation_requests
 -- ----------------------------
 BEGIN;
-INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('a1b2c3d4-e5f6-4890-abcd-ef1234567890', 'f74e4557-beb5-4eb0-adeb-9f6962df7560', '2025-09-15', '2025-09-19', 5, 'Family vacation planned', 't', 1875000.00);
-INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('d4e5f6a7-b8c9-4123-def0-456789012345', '655f2100-dafb-4fbc-8ea0-9dfaf9f32a03', '2025-07-15', '2025-07-26', 10, 'Summer break with accumulated vacation days', 't', 2666666.67);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('798e2c3f-532b-4d5d-933f-7cf8f64474bd', 'f74e4557-beb5-4eb0-adeb-9f6962df7560', '2025-08-30', '2025-08-31', 2, NULL, 'f', NULL);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('e5bc7159-dc11-47a6-ab02-9a98918afa99', 'f74e4557-beb5-4eb0-adeb-9f6962df7560', '2025-08-30', '2025-08-31', 2, NULL, 'f', NULL);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('2ff66a64-c513-44b6-abfb-a0dff863c89e', 'f74e4557-beb5-4eb0-adeb-9f6962df7560', '2025-08-30', '2025-08-31', 2, NULL, 'f', NULL);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('4596c50f-cdfa-4d49-91ef-365c0e777d74', 'f74e4557-beb5-4eb0-adeb-9f6962df7560', '2025-08-30', '2025-08-31', 2, 'Test request', 'f', NULL);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('b674d96f-6efc-4260-8d05-fdb57dfbf324', 'f74e4557-beb5-4eb0-adeb-9f6962df7560', '2025-08-30', '2025-08-31', 2, 'Test request', 'f', NULL);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('65456014-8e21-43a9-a5bd-eebcff10d324', '655f2100-dafb-4fbc-8ea0-9dfaf9f32a03', '2025-08-30', '2025-09-05', 7, NULL, 'f', NULL);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('721cbc34-74d1-4101-be46-94ba29ef5293', 'f74e4557-beb5-4eb0-adeb-9f6962df7560', '2025-08-28', '2025-08-31', 4, 'quiero salirrrrrrr', 'f', NULL);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('2eefbc6c-88da-427a-8d2d-ce7cb6ef728c', 'e2367a84-0a1c-4174-9449-b94c4b3c9589', '2025-09-03', '2025-09-06', 4, NULL, 'f', NULL);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('6e769cd0-725b-4808-95de-b382f81abcb0', 'e2367a84-0a1c-4174-9449-b94c4b3c9589', '2025-08-30', '2025-08-31', 2, 'dasdas', 'f', NULL);
+INSERT INTO "public"."vacation_requests" ("id", "vacation_type_id", "start_date", "end_date", "days_requested", "comments", "is_paid", "payment_amount") VALUES ('9d88903c-a6a0-4583-ba81-f22f933017b3', '655f2100-dafb-4fbc-8ea0-9dfaf9f32a03', '2025-08-19', '2025-08-29', 11, NULL, 'f', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -889,6 +941,21 @@ ALTER TABLE "public"."leave_types" ADD CONSTRAINT "leave_types_pkey" PRIMARY KEY
 ALTER TABLE "public"."notifications" ADD CONSTRAINT "notifications_pkey" PRIMARY KEY ("id");
 
 -- ----------------------------
+-- Indexes structure for table password_reset_tokens
+-- ----------------------------
+CREATE INDEX "idx_password_reset_email" ON "public"."password_reset_tokens" USING btree (
+  "email" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_password_reset_expires" ON "public"."password_reset_tokens" USING btree (
+  "expires_at" "pg_catalog"."timestamp_ops" ASC NULLS LAST
+);
+
+-- ----------------------------
+-- Uniques structure for table password_reset_tokens
+-- ----------------------------
+ALTER TABLE "public"."password_reset_tokens" ADD CONSTRAINT "unique_user_token" UNIQUE ("user_id");
+
+-- ----------------------------
 -- Uniques structure for table request_statuses
 -- ----------------------------
 ALTER TABLE "public"."request_statuses" ADD CONSTRAINT "request_statuses_name_key" UNIQUE ("name");
@@ -1006,6 +1073,11 @@ ALTER TABLE "public"."leave_requests" ADD CONSTRAINT "leave_requests_leave_type_
 -- Foreign Keys structure for table notifications
 -- ----------------------------
 ALTER TABLE "public"."notifications" ADD CONSTRAINT "notifications_recipient_id_fkey" FOREIGN KEY ("recipient_id") REFERENCES "public"."employees" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- ----------------------------
+-- Foreign Keys structure for table password_reset_tokens
+-- ----------------------------
+ALTER TABLE "public"."password_reset_tokens" ADD CONSTRAINT "fk_password_reset_user" FOREIGN KEY ("user_id") REFERENCES "public"."employees" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table requests
