@@ -6,7 +6,7 @@
 import { Resend } from 'resend';
 
 export class EmailService {
-    static resend = null;
+    static resend = new Resend(process.env.RESEND_API_KEY);
 
     static initialize() {
         if (!this.resend && process.env.RESEND_API_KEY) {
